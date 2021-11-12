@@ -8,7 +8,7 @@ https://github.com/callstack/react-native-paper or https://callstack.github.io/r
 https://github.com/Templarian/MaterialDesign-React
 */
 
-/* sample change - new comment - another comment */
+/* sample change - new comment - another comment. Yet another comment */
 
 
 import * as React from 'react';
