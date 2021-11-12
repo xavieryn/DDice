@@ -13,6 +13,7 @@ import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 import create from './screens/create.js';
 import compare from './screens/compare.js';
+import Home from './screens/Home.js';
 import './components/DDGlobal.js';
 
 const App = () => {
@@ -34,7 +35,7 @@ const App = () => {
   const renderScene = BottomNavigation.SceneMap({
     spells: create,
     create: create,
-    home: create,
+    home: Home,
     chart: compare,
     settings: create,
   });
