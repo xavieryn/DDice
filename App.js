@@ -8,6 +8,8 @@ https://github.com/callstack/react-native-paper or https://callstack.github.io/r
 https://github.com/Templarian/MaterialDesign-React
 */
 
+// Comment added from Xavier's computer
+
 import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 import create from './screens/create.js';
