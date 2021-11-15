@@ -14,6 +14,7 @@ import { BottomNavigation, Text } from 'react-native-paper';
 import create from './screens/create.js';
 import compare from './screens/compare.js';
 import Home from './screens/Home.js';
+//import Spells from './screens/Spells.js';
 import './components/DDGlobal.js';
 
 const App = () => {
