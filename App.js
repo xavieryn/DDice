@@ -11,11 +11,15 @@ https://github.com/Templarian/MaterialDesign-React
 
 import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import create from './screens/create.js';
 import compare from './screens/compare.js';
 import Home from './screens/Home.js';
-//import Spells from './screens/Spells.js';
+import Spells from './screens/Spells.js';
 import './components/DDGlobal.js';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [index, setIndex] = React.useState(2);
@@ -34,7 +38,7 @@ const App = () => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    spells: create,
+    spells: Spells,
     create: create,
     home: Home,
     chart: compare,
