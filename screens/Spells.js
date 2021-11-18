@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, ScrollView, Dimensions,  Pressable, FlatList} from 'react-native'; 
-import Constants from 'expo-constants';
+import React from 'react';
+import { Text, View, StyleSheet, ScrollView,  Dimensions} from 'react-native'; 
 import Modal from '../components/SpellsModal';
 import { useStore, setStore } from "../App";
 
-
-const windowWidth = Dimensions.get('window').width;const windowHeight = Dimensions.get('window').height;
-
+const windowHeight = Dimensions.get('window').height;
 
 const Spells = () => {
-  
+  const [title, setTitle] = React.useState('Spells');
   const { items: penis } = useStore(["items"]);
 
   return (
     <View style={styles.container}> 
-      <Text style={styles.title}>
-        Spells
-      </Text>
+     <View
+        style={{
+          backgroundColor: '#231942',
+          borderBottomEndRadius: 5,
+          borderBottomStartRadius: 5,
+        }}>
+        <Text style={styles.header}>{title}</Text>
+      </View>
 
       <ScrollView style={styles.innerContainer}>
         {penis.map(item => (
@@ -50,25 +52,17 @@ const styles = StyleSheet.create ({
     textAlign: 'center',
   },
   container: {
-    padddingTop: Constants.statusBarHeight,
     flex: 1,
-    backgroundColor: '#8F7EA6',
-  },
-
-  title: {
-    fontSize: 50,
+    backgroundColor: '#9988A4',
+    paddingBottom: windowHeight / 20,
+    justifyContent: 'space-between',
+  }, 
+  header: {
+    margin: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    color: 'white',
-    backgroundColor: '#413768',
-    height: windowHeight/5,
-    paddingTop: 20,
-    paddingBottom: 20,
-
-    
+    color: '#E6DEFC',
   },
 
   innerContainer: {

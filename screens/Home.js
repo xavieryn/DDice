@@ -1,20 +1,22 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import Constants from 'expo-constants';
-
-// You can import from local files
+import { Text, View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
 
-
-// or any pure javascript modules available in npm
-import { Card } from 'react-native-paper';
+const windowHeight = Dimensions.get('window').height;
 
 export default function Home() {
+  const [title, setTitle] = React.useState('Home');
   return (
+    
     <View style={styles.container}>
-      <Text style={styles.title}>
-        D&Dice
-      </Text>
+      <View
+        style={{
+          backgroundColor: '#231942',
+          borderBottomEndRadius: 5,
+          borderBottomStartRadius: 5,
+        }}>
+        <Text style={styles.header}>{title}</Text>
+      </View>
       <View style={styles.innerContainer}>
       
          
@@ -31,30 +33,23 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#8f7ea6',
-    padding: 8,
-    borderWidth: 1,
-    color: 'white',
-  },
   button: {
     padding: 20,
     backgroundColor: '#413768',
     borderRadius: 10,
   },
-  title: {
-    marginBottom: 10,
-    fontSize: 50,
+  container: {
+    flex: 1,
+    backgroundColor: '#9988A4',
+    paddingBottom: windowHeight / 20,
+    justifyContent: 'space-between',
+  }, 
+  header: {
+    margin: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
-    borderWidth: 1,
-    color: 'white',
-    backgroundColor: '#413768',
-    marginLeft: 50,
-    marginRight:50,
-  
+    color: '#E6DEFC',
   },
   innerContainer: {
     flex: 1,   
