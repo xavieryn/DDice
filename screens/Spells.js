@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, ScrollView, Dimensions,  Pressable, FlatList} from 'react-native'; 
 import Constants from 'expo-constants';
-import Modal from '../components/Modal';
+import Modal from '../components/SpellsModal';
+import { useStore, setStore } from "../App";
 
 
 const windowWidth = Dimensions.get('window').width;const windowHeight = Dimensions.get('window').height;
@@ -9,7 +10,7 @@ const windowWidth = Dimensions.get('window').width;const windowHeight = Di
 
 const Spells = () => {
   
-  //const { penis } = useStore(["items"]);
+  const { items: penis } = useStore(["items"]);
 
   const [items, setItems] = useState([
       {id: 1, text: 'p'},
@@ -26,7 +27,7 @@ const Spells = () => {
       </Text>
 
       <ScrollView style={styles.innerContainer}>
-        {items.map(item => (
+        {penis.map(item => (
           <View style={styles.spellContainer}>
           <Text style={styles.spellText}>
             {item.text} 
