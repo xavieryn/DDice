@@ -11,10 +11,10 @@ import Constants from 'expo-constants';
 import { Picker } from '@react-native-picker/picker';
 
 // You can import from local files
-import DDButton from './../components/DDButton';
-import DDdiceSelect from './../components/DDdiceSelect';
-import DDModal from './../components/DDModal';
-import './../components/DDGlobal.js';
+import DDButton from '../components/DDButton';
+import DDdiceSelect from '../components/DDdiceSelect';
+import DDModal from '../components/DDModal';
+import '../components/DDGlobal.js';
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
