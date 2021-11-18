@@ -10,33 +10,12 @@ https://github.com/Templarian/MaterialDesign-React
 
 
 import * as React from 'react';
-<<<<<<< HEAD
+
 import { StyleSheet, View } from "react-native";
 import BottomNav from './components/BottomNav';
-import { createState } from "niue"; 
-
-const [_useStore, _setState] = createState({
-  items: [
-      {id: 1, text: 'p'},
-      {id: 2, text: 'e'},
-      {id: 3, text: 'n'},
-      {id: 4, text: 'i'},
-      {id: 5, text: 's'},
-      {id: 6, text: 'e'},
-      {id: 7, text: 's'},
-  ]
-});
-
-
-export const useStore = _useStore;
-export const setState = _setState;
-
-const App = () => {
-  
-=======
 import { BottomNavigation, Text } from 'react-native-paper';
-import create from './screens/create.js';
-import compare from './screens/compare.js';
+import create from './screens/Create.js';
+import compare from './screens/Compare.js';
 import './components/DDGlobal.js';
 
 const App = () => {
@@ -63,7 +42,7 @@ const App = () => {
     settings: create,
   });
 
->>>>>>> parent of a2fd429 (adds home screen to app)
+
   return (
     <View style={styles.container}>
       <BottomNav/>
