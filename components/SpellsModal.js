@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
     
   },
   buttonOpen: {
-    backgroundColor: '#8f7ea6',
+    //change color to white if you want to see how big dimensions are 
+    backgroundColor: '#9988A4',
   },
   buttonClose: {
     backgroundColor:  '#e4d8c6',
