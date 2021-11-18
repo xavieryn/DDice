@@ -5,6 +5,8 @@ import Home from "../screens/Home";
 import Spells from "../screens/Spells";
 import Create from '../screens/Create.js';
 import Compare from '../screens/Compare.js';
+import Settings from '../screens/Settings.js';
+
 
 
 const BottomNav = () => {
@@ -22,7 +24,7 @@ const BottomNav = () => {
     create: Create,
     home: Home,
     chart: Compare, 
-    settings: Spells,
+    settings: Settings,
   });
 
   return (
