@@ -14,7 +14,7 @@ import { Picker } from '@react-native-picker/picker';
 import DDButton from '../components/DDButton';
 import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
-import { useStore, setStore } from '../components/DDGlobal'
+import { PLSWORK } from '../components/DDGlobal'
 
 
 // or any pure javascript modules available in npm
@@ -25,7 +25,7 @@ const windowHeight = Dimensions.get('window').height;
 
 // export function
 export default function compare() {
-  const { items: items } = useStore(["items"]);
+  const state = PLSWORK();
   const [title, setTitle] = React.useState('Create Spell');
 
   const [selectedSpell, setSelectedSpell] = React.useState();
@@ -51,8 +51,8 @@ export default function compare() {
         <Picker
           selectedValue={selectedSpell}
           onValueChange={(itemValue, itemIndex) => setSelectedSpell(itemValue)}>
-          {items.map((spell) => (
-            <Picker.Item label={spell.text} value={spell.id} />
+          {state.value.items.map((spell) => (
+            <Picker.Item label={spell.text} value={spell.id}  key={spell.id} />
           ))}
         </Picker>
       </View>
@@ -69,7 +69,7 @@ export default function compare() {
             justifyContent: 'center',
           }}
           onPress={() => {
-            console.log(simulate(spells[selectedSpell]))
+            console.log('Visualize')
           }}
           text="Visualize"
           textStyle={{
@@ -85,45 +85,7 @@ export default function compare() {
 
 // np > 10
 // n(1-p) > 10
-function simulate(spell) {
-  const numRolls = spell.d4 + spell.d6 + spell.d8 + spell.d10 + spell.d12;
-  const max = (spell.d4 * 4) + (spell.d6 * 6) + (spell.d8 * 8) + (spell.d10 * 10) + (spell.d12 * 12);
-  const p = 1/numRolls;
 
-  let rolls = {};
-  let roll = 0;
-
-  const trials = (10/p > 10/(1-p) ? 10/p : 10/(1-p));
-
-  console.log(numRolls);
-  console.log(spell);
-
-  for (let i = numRolls; i <= max; i++) {
-    rolls[i] = 0;
-  }
-
-  for (let i = 0; i < trials; i++) {
-    roll += simulateRolls(spell.d4, 4);
-    roll += simulateRolls(spell.d6, 6);
-    roll += simulateRolls(spell.d8, 8);
-    roll += simulateRolls(spell.d10, 10);
-    roll += simulateRolls(spell.d12, 12);
-
-    rolls[roll]++;
-  }
-  
-  return(rolls);
-}
-
-function simulateRolls(dice, sides) {
-  let returnVal = 0;
-
-  for (let i = 0; i < dice; i++) {
-    returnVal += Math.floor(Math.random() * parseInt(sides + 1));
-  }
-
-  return(returnVal);
-}
 
 const styles = StyleSheet.create({
   container: {

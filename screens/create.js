@@ -14,7 +14,7 @@ import { Picker } from '@react-native-picker/picker';
 import DDButton from '../components/DDButton';
 import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
-import '../components/DDGlobal.js';
+import {PLSWORK} from '../components/DDGlobal.js';
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
@@ -29,7 +29,7 @@ export default function create() {
   const [diceCount, setDiceCount] = React.useState(['', '', '', '', '']);
   const [index, setIndex] = React.useState(0);
   const [spellName, setSpellName] = React.useState('');
-
+  const state = PLSWORK();
   return (
     <View style={styles.container}>
       <Modal visible={diceSelecter} animationType="slide">
@@ -128,6 +128,7 @@ export default function create() {
 
             {/* create spell button */}
             <DDButton
+              
               buttonStyle={{
                 backgroundColor: '#E4D8C6',
                 height: 35,
@@ -137,14 +138,14 @@ export default function create() {
                 justifyContent: 'center',
               }}
               onPress={() => {
-                spells.push({
+                state.value.items.push({
                   name: spellName,
                   d4: diceCount[index],
                   d6: diceCount[index],
                   d8: diceCount[index],
                   d10: diceCount[index],
                   d12: diceCount[index],
-                  id: spells[spells.length - 1].id + 1
+                  id: state.value.items[state.value.items.length - 1].id + 1
                 })
               }}
               text="Create Spell"
