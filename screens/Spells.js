@@ -45,6 +45,7 @@ const styles = StyleSheet.create ({
     margin: 10,
     alignItems: 'center',
     flexDirection: 'row',
+    borderRadius: 10,
   },
 
   spellText: {
