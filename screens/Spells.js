@@ -16,6 +16,7 @@ const Spells = () => {
           backgroundColor: '#231942',
           borderBottomEndRadius: 5,
           borderBottomStartRadius: 5,
+          marginBottom: 15,
         }}>
         <Text style={styles.header}>{title}</Text>
       </View>
