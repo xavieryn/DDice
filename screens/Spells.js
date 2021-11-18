@@ -12,14 +12,6 @@ const Spells = () => {
   
   const { items: penis } = useStore(["items"]);
 
-  const [items, setItems] = useState([
-      {id: 1, text: 'p'},
-      {id: 2, text: 'e'},
-      {id: 3, text: 'n'},
-      {id: 4, text: 'i'},
-      {id: 5, text: 's'},
-  ]);
-
   return (
     <View style={styles.container}> 
       <Text style={styles.title}>
