@@ -14,7 +14,8 @@ import { Picker } from '@react-native-picker/picker';
 import DDButton from '../components/DDButton';
 import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
-import '../components/DDGlobal.js';
+import { useStore, setStore } from '../components/DDGlobal'
+
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
@@ -24,6 +25,7 @@ const windowHeight = Dimensions.get('window').height;
 
 // export function
 export default function compare() {
+  const { items: items } = useStore(["items"]);
   const [title, setTitle] = React.useState('Create Spell');
 
   const [selectedSpell, setSelectedSpell] = React.useState();
@@ -49,8 +51,8 @@ export default function compare() {
         <Picker
           selectedValue={selectedSpell}
           onValueChange={(itemValue, itemIndex) => setSelectedSpell(itemValue)}>
-          {spells.map((spell) => (
-            <Picker.Item label={spell.name} value={spell.id} />
+          {items.map((spell) => (
+            <Picker.Item label={spell.text} value={spell.id} />
           ))}
         </Picker>
       </View>
