@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView,  Dimensions} from 'react-native'; 
 import Modal from '../components/SpellsModal';
-import { useStore, setStore } from "../App";
+import { useStore, setStore } from "../components/DDGlobal";
 
 const windowHeight = Dimensions.get('window').height;
 
