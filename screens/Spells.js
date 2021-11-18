@@ -7,7 +7,7 @@ const windowHeight = Dimensions.get('window').height;
 
 const Spells = () => {
   const [title, setTitle] = React.useState('Spells');
-  const [items, penis] = React.useState(['items']);
+  const { items: penis } = useStore(["items"]);
 
   return (
     <View style={styles.container}> 
@@ -21,12 +21,13 @@ const Spells = () => {
       </View>
 
       <ScrollView style={styles.innerContainer}>
-        {items.map((item) => (
+        {penis.map(item => (
           <View style={styles.spellContainer}>
-            <Text style={styles.spellText}>
-              {item} 
-            </Text>
-          </View>
+          <Text style={styles.spellText}>
+            {item.text} 
+          </Text>
+          <Modal/>   
+        </View>
         ))}
         
       </ScrollView>

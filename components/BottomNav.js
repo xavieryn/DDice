@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import { BottomNavigation, Text, View } from 'react-native-paper';
+import Home from "../screens/Home";
 import Spells from "../screens/Spells";
 import Create from '../screens/Create.js';
 import Compare from '../screens/Compare.js';
@@ -21,7 +22,7 @@ const BottomNav = () => {
   const renderScene = BottomNavigation.SceneMap({
     spells: Spells,
     create: Create,
-    home: Create,
+    home: Home,
     chart: Compare, 
     settings: Settings,
   });
