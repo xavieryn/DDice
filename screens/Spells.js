@@ -1,14 +1,21 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView,  Dimensions} from 'react-native'; 
 import Modal from '../components/SpellsModal';
-import { useStore, setStore } from "../components/DDGlobal";
+//import { useStore, setStore } from "../components/DDGlobal";
+import { useState } from '@hookstate/core';
+import { PLSWORK } from '../components/DDGlobal';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const windowHeight = Dimensions.get('window').height;
 
-const Spells = () => {
+const Spells = () =>{
   const [title, setTitle] = React.useState('Spells');
-  const { items: items } = useStore(["items"]);
+  //const { items: items } = useStore(["items"]);
+  const state = PLSWORK();
 
+  const addSpell = () => {
+    alert('HII!!!')
+  }
   return (
     <View style={styles.container}> 
      <View
@@ -20,9 +27,17 @@ const Spells = () => {
         }}>
         <Text style={styles.header}>{title}</Text>
       </View>
+      <TouchableOpacity onPress={() => {
+        addSpell();
+      }} >
+          <Text>
+            Add Spell
+          </Text>
+        </TouchableOpacity>
 
       <ScrollView style={styles.innerContainer}>
-        {items.map(item => (
+        {/* {items.map(item => ( */}
+        {state.value.items.map(item => (
           <View style={styles.spellContainer} key={item.id}>
           <Text style={styles.spellText}>
             {item.text} 
