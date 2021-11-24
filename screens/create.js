@@ -20,6 +20,8 @@ import _spellsObj, {none} from '../components/DDGlobal';
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -148,7 +150,7 @@ export default function create() {
                   d8: diceCount[index],
                   d10: diceCount[index],
                   d12: diceCount[index],
-                  id: Math.random()
+                  id: uuidv4()
                 }])
               }}
               text="Create Spell"

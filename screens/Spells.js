@@ -14,7 +14,7 @@ const Spells = () =>{
   const state = useState(_spellsObj);
   function CodingSucks() {
     
-      state.merge([{id: Math.random(), text:'pp'}])
+      state.merge([{id: uuivd4(), text:'pp'}])
   }
 console.log(state.get())
   return (
