@@ -70,7 +70,7 @@ export default function compare() {
             justifyContent: 'center',
           }}
           onPress={() => {
-            console.log('Visualize')
+            console.log(roll(selectedSpell))
           }}
           text="Visualize"
           textStyle={{
@@ -84,8 +84,59 @@ export default function compare() {
   );
 }
 
-// np > 10
-// n(1-p) > 10
+// calculate spell chart
+function roll(spell) {
+  let dice = [];
+  
+  // add d4
+  for (let i = 0; i < spell.d4; i++) {
+    appendItem(dice, [1/4,1/4,1/4,1/4]);
+  }
+  
+  // add d6
+  for (let i = 0; i < spell.d6; i++) {
+    appendItem(dice, [1/6,1/6,1/6,1/6,1/6,1/6]);
+  }
+  
+  // add d8
+  for (let i = 0; i < spell.d8; i++) {
+    appendItem(dice, [1/8,1/8,1/8,1/8,1/8,1/8,1/8,1/8]);
+  }
+  
+  // add d10
+  for (let i = 0; i < spell.d10; i++) {
+    appendItem(dice, [1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10]);
+  }
+  
+  // add d12
+  for (var i = 0; i < spell.d12; i++) {
+    appendItem(dice, [1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12]);
+  }
+  
+  let answer = findConvolution(dice[0], dice[1]);
+  
+  for (let k = 2; k < dice.length; k++)   {
+    answer = findConvolution(answer, dice[k]);
+  } 
+  
+  return (answer);
+}
+
+function findConvolution(a, b) {
+  let output = [];
+  
+  for (let i = 0; i < (a.length + b.length - 1); i++) {
+    appendItem(output, []);
+  }
+  
+  for(let i = 0; i < a.length; i++)   {
+    for(let j = 0; j < b.length; j++)   {
+      output[i + j] += (a[i] * b[j]);
+    } //end for j
+  } // end for i
+  
+  return (output);
+}
 
 
 const styles = StyleSheet.create({
