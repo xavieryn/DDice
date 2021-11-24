@@ -3,19 +3,20 @@ import { Text, View, StyleSheet, ScrollView,  Dimensions} from 'react-native';
 import Modal from '../components/SpellsModal';
 //import { useStore, setStore } from "../components/DDGlobal";
 import { useState } from '@hookstate/core';
-import { PLSWORK } from '../components/DDGlobal';
+import _spellsObj  from '../components/DDGlobal';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const windowHeight = Dimensions.get('window').height;
 
 const Spells = () =>{
   const [title, setTitle] = React.useState('Spells');
-  //const { items: items } = useStore(["items"]);
-  const state = PLSWORK();
 
-  const addSpell = () => {
-    alert('HII!!!')
+  const state = useState(_spellsObj);
+  function CodingSucks() {
+    
+      state.merge([{id: Math.random(), text:'pp'}])
   }
+console.log(state.get())
   return (
     <View style={styles.container}> 
      <View
@@ -27,20 +28,18 @@ const Spells = () =>{
         }}>
         <Text style={styles.header}>{title}</Text>
       </View>
-      <TouchableOpacity onPress={() => {
-        addSpell();
-      }} >
-          <Text>
-            Add Spell
-          </Text>
-        </TouchableOpacity>
-
+      <TouchableOpacity onPress={ () => CodingSucks()}>
+        <Text>
+          hiiii
+        </Text>
+      </TouchableOpacity>
       <ScrollView style={styles.innerContainer}>
         {/* {items.map(item => ( */}
-        {state.value.items.map(item => (
-          <View style={styles.spellContainer} key={item.id}>
+        
+        {state.map(item => (
+          <View style={styles.spellContainer} key={item.id.get()}>
           <Text style={styles.spellText}>
-            {item.text} 
+            {item.text.get()} 
           </Text>
           <Modal/>   
         </View>

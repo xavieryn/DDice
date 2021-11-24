@@ -14,7 +14,8 @@ import { Picker } from '@react-native-picker/picker';
 import DDButton from '../components/DDButton';
 import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
-import { PLSWORK } from '../components/DDGlobal'
+import { useState } from '@hookstate/core';
+import _spellsObj  from '../components/DDGlobal';
 
 
 // or any pure javascript modules available in npm
@@ -25,9 +26,9 @@ const windowHeight = Dimensions.get('window').height;
 
 // export function
 export default function compare() {
-  const state = PLSWORK();
+  
   const [title, setTitle] = React.useState('Create Spell');
-
+  const state = useState(_spellsObj);
   const [selectedSpell, setSelectedSpell] = React.useState();
 
   return (
@@ -51,8 +52,8 @@ export default function compare() {
         <Picker
           selectedValue={selectedSpell}
           onValueChange={(itemValue, itemIndex) => setSelectedSpell(itemValue)}>
-          {state.value.items.map((spell) => (
-            <Picker.Item label={spell.text} value={spell.id}  key={spell.id} />
+          {state.map((spell) => (
+            <Picker.Item label={spell.text.get()} value={spell.id.get()}  key={spell.id.get()} />
           ))}
         </Picker>
       </View>
