@@ -141,15 +141,15 @@ export default function create() {
                 justifyContent: 'center',
               }}
               onPress={() => {
-                state.merge({
-                  name: spellName,
+                state.merge([{
+                  text: spellName,
                   d4: diceCount[index],
                   d6: diceCount[index],
                   d8: diceCount[index],
                   d10: diceCount[index],
                   d12: diceCount[index],
                   id: Math.random()
-                })
+                }])
               }}
               text="Create Spell"
               textStyle={{
