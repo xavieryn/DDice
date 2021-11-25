@@ -16,8 +16,8 @@ const Spells = () =>{
     
       state.merge([{id: uuivd4(), text:'pp'}])
   }
-console.log(state.get())
-  return (
+
+  return ( 
     <View style={styles.container}> 
      <View
         style={{
