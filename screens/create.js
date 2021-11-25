@@ -7,6 +7,7 @@ import {
   TextInput,
   Modal,
 } from 'react-native';
+
 import Constants from 'expo-constants';
 import { Picker } from '@react-native-picker/picker';
 
@@ -14,10 +15,13 @@ import { Picker } from '@react-native-picker/picker';
 import DDButton from '../components/DDButton';
 import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
-import {PLSWORK} from '../components/DDGlobal.js';
+import { useState } from '@hookstate/core';
+import _spellsObj, {none} from '../components/DDGlobal';
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -29,7 +33,8 @@ export default function create() {
   const [diceCount, setDiceCount] = React.useState(['', '', '', '', '']);
   const [index, setIndex] = React.useState(0);
   const [spellName, setSpellName] = React.useState('');
-  const state = PLSWORK();
+  const state = useState(_spellsObj);
+
   return (
     <View style={styles.container}>
       <Modal visible={diceSelecter} animationType="slide">
@@ -138,15 +143,15 @@ export default function create() {
                 justifyContent: 'center',
               }}
               onPress={() => {
-                state.value.items.push({
-                  name: spellName,
+                state.merge([{
+                  text: spellName,
                   d4: diceCount[index],
                   d6: diceCount[index],
                   d8: diceCount[index],
                   d10: diceCount[index],
                   d12: diceCount[index],
-                  id: state.value.items[state.value.items.length - 1].id + 1
-                })
+                  id: uuidv4()
+                }])
               }}
               text="Create Spell"
               textStyle={{

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Alert, Modal, StyleSheet, Text, TouchableOpacity, Pressable, View, Image } from "react-native";
+import { useState } from '@hookstate/core';
+import _spellsObj, {none} from '../components/DDGlobal';
 
 const App = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const state = useState(_spellsObj);
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -16,6 +19,13 @@ const App = () => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Hello World!</Text>
+            <TouchableOpacity 
+            onPress={() => state.set(none)}
+            style={[styles.button, styles.buttonClose]}>
+              <Text>
+                delete
+              </Text>
+            </TouchableOpacity>
             <TouchableOpacity
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
