@@ -9,14 +9,18 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const windowHeight = Dimensions.get('window').height;
 
 const Spells = () =>{
+  // title of screen
   const [title, setTitle] = React.useState('Spells');
-
+  //  able to change state of screen
   const state = useState(_spellsObj);
+  
+  // function adds new object 
+  // for testing purposes
+  {/*
   function CodingSucks() {
-    
       state.merge([{id: uuivd4(), text:'pp'}])
   }
-
+*/}
   return ( 
     <View style={styles.container}> 
      <View
@@ -26,21 +30,23 @@ const Spells = () =>{
           borderBottomStartRadius: 5,
           marginBottom: 15,
         }}>
+      {/* displays title */}
         <Text style={styles.header}>{title}</Text>
       </View>
+       {/* button that refers to function called CodingSucks */}
       <TouchableOpacity onPress={ () => CodingSucks()}>
         <Text>
           hiiii
         </Text>
       </TouchableOpacity>
       <ScrollView style={styles.innerContainer}>
-        {/* {items.map(item => ( */}
-        
+         {/* displays each item in each container*/}
         {state.map(item => (
           <View style={styles.spellContainer} key={item.id.get()}>
           <Text style={styles.spellText}>
             {item.text.get()} 
           </Text>
+           {/* pop up that gives users options to: Delete, Edit, Rename */}
           <Modal/>   
         </View>
         ))}
