@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
 
-
+const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
           borderBottomEndRadius: 5,
           borderBottomStartRadius: 5,
         }}>
-        <Text style={styles.header}>{title}</Text>
+        <Image style={{width: windowWidth, height: 200, resizeMode: 'contain'}} source={require('../assets/dndice.png')} />
       </View>
       <View style={styles.innerContainer}>
       
