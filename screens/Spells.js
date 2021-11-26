@@ -60,18 +60,25 @@ const Spells = () =>{
 const styles = StyleSheet.create ({
    spellContainer: {
     flex: 1,
-    borderWidth: 1,
+    //borderWidth: 1,
     padding: 20,
-    margin: 10,
+    marginLeft: 17,
+    marginRight: 17,
+    marginTop: 20,
     alignItems: 'center',
     flexDirection: 'row',
+    backgroundColor: '#E4D8C6',
     borderRadius: 10,
+    
   },
 
   spellText: {
     flex: 3, 
-    borderWidth: 1, 
+    //borderWidth: 1, 
     textAlign: 'center',
+    fontSize: 20,
+    color: '#4A3D59',
+    fontWeight: 'bold',
   },
   container: {
     flex: 1,
