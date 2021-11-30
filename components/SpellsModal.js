@@ -4,6 +4,7 @@ import { useState, none } from '@hookstate/core';
 import _spellsObj from '../components/DDGlobal';
 import { TextInput } from "react-native-gesture-handler";
 
+
 const App = ( { item } ) => {
   const [modalVisible, setModalVisible] = React.useState(false);
   const state = useState(_spellsObj);
@@ -22,13 +23,9 @@ const App = ( { item } ) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             {/*<Text style={styles.modalText}>Settings</Text>*/}
-            <TextInput
-                style={styles.text}
-                value={newText}
-                onChangeText={onChangeText}
-                onSubmitEditing={ () => item.text.set(() => newText)}
-                
-            />
+            <Text style={styles.text}>
+              {item.text.get()}
+            </Text>
             <TouchableOpacity 
             onPress={() => {
               item.set(none)}}
