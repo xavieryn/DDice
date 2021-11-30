@@ -26,14 +26,20 @@ const App = ( { item } ) => {
             <Text style={styles.text}>
               {item.text.get()}
             </Text>
+
             <TouchableOpacity 
             onPress={() => {
               item.set(none)}}
             style={[styles.button, styles.buttonClose]}>
               <Text>
-                delete
+                Delete
               </Text>
             </TouchableOpacity>
+            
+            <TouchableOpacity style={[styles.button, styles.buttonClose]}>
+              <Text> Edit </Text>
+            </TouchableOpacity>
+            
             <TouchableOpacity
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
