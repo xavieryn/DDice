@@ -6,7 +6,7 @@ import { createState, useState } from '@hookstate/core';
 // global object 
 const _spellsObj = createState( [
   {id: uuidv4(), text: 'Choose a spell'},
-  {id: uuidv4(), text: 'Choose a spell'},
+  {id: uuidv4(), text: 'fireball'},
   {id: uuidv4(), text: 'test'},
   ]
 );

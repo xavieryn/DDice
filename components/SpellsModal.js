@@ -1,15 +1,18 @@
 import React from "react";
 import { Alert, Modal, StyleSheet, Text, TouchableOpacity, Pressable, View, Image } from "react-native";
-import { useState } from '@hookstate/core';
-import _spellsObj, {none} from '../components/DDGlobal';
+import { useState, none } from '@hookstate/core';
+import _spellsObj from '../components/DDGlobal';
+import { TextInput } from "react-native-gesture-handler";
 
-const App = () => {
+const App = ( { item } ) => {
   const [modalVisible, setModalVisible] = React.useState(false);
   const state = useState(_spellsObj);
+  const [newText, onChangeText] = React.useState( item.text.get());
+  
+  console.log(item.text.get())
   return (
     <View style={styles.centeredView}>
       <Modal
-        
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -18,9 +21,17 @@ const App = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
+            {/*<Text style={styles.modalText}>Settings</Text>*/}
+            <TextInput
+                style={styles.text}
+                value={newText}
+                onChangeText={onChangeText}
+                onSubmitEditing={ () => item.text.set(() => newText)}
+                
+            />
             <TouchableOpacity 
-            onPress={() => state.set(none)}
+            onPress={() => {
+              item.set(none)}}
             style={[styles.button, styles.buttonClose]}>
               <Text>
                 delete
@@ -30,7 +41,7 @@ const App = () => {
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Close</Text>
             </TouchableOpacity>
              
           </View>
@@ -80,7 +91,7 @@ const styles = StyleSheet.create({
   },
   buttonOpen: {
     //change color to white if you want to see how big dimensions are 
-    backgroundColor: '#9988A4',
+    backgroundColor: '#E4D8C6',
   },
   buttonClose: {
     backgroundColor:  '#e4d8c6',
@@ -105,6 +116,9 @@ const styles = StyleSheet.create({
     height: 10,    
     
   },
+  text: {
+    color: 'white',
+  }
 });
 
 export default App;
