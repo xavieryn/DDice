@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View, StyleSheet, ScrollView,  Dimensions} from 'react-native'; 
-import Modal from '../components/SpellsModal';
+import { Text, View, StyleSheet, ScrollView,  Dimensions, TextInput} from 'react-native'; 
+import SpellsModal from '../components/SpellsModal';
+import SpellTitle from '../components/SpellTitle';
 //import { useStore, setStore } from "../components/DDGlobal";
 import { useState } from '@hookstate/core';
 import _spellsObj  from '../components/DDGlobal';
@@ -13,14 +14,9 @@ const Spells = () =>{
   const [title, setTitle] = React.useState('Spells');
   //  able to change state of screen
   const state = useState(_spellsObj);
-  
-  // function adds new object 
-  // for testing purposes
-  {/*
-  function CodingSucks() {
-      state.merge([{id: uuivd4(), text:'pp'}])
-  }
-*/}
+  console.log(state);
+    
+
   return ( 
     <View style={styles.container}> 
      <View
@@ -34,20 +30,15 @@ const Spells = () =>{
         <Text style={styles.header}>{title}</Text>
       </View>
        {/* button that refers to function called CodingSucks */}
-      <TouchableOpacity onPress={ () => CodingSucks()}>
-        <Text>
-          hiiii
-        </Text>
-      </TouchableOpacity>
+      
+
       <ScrollView style={styles.innerContainer}>
          {/* displays each item in each container*/}
-        {state.map(item => (
+        {state.slice(1).map(item => (
           <View style={styles.spellContainer} key={item.id.get()}>
-          <Text style={styles.spellText}>
-            {item.text.get()} 
-          </Text>
+          <SpellTitle item={ item }/>
            {/* pop up that gives users options to: Delete, Edit, Rename */}
-          <Modal/>   
+          <SpellsModal item={ item }/>   
         </View>
         ))}
         
@@ -60,18 +51,25 @@ const Spells = () =>{
 const styles = StyleSheet.create ({
    spellContainer: {
     flex: 1,
-    borderWidth: 1,
+    //borderWidth: 1,
     padding: 20,
-    margin: 10,
+    marginLeft: 17,
+    marginRight: 17,
+    marginTop: 20,
     alignItems: 'center',
     flexDirection: 'row',
+    backgroundColor: '#E4D8C6',
     borderRadius: 10,
+    
   },
 
   spellText: {
     flex: 3, 
-    borderWidth: 1, 
+    //borderWidth: 1, 
     textAlign: 'center',
+    fontSize: 20,
+    color: '#4A3D59',
+    fontWeight: 'bold',
   },
   container: {
     flex: 1,
@@ -90,8 +88,10 @@ const styles = StyleSheet.create ({
   innerContainer: {
     borderWidth: 1,
     flex: 1,
-    
   },
+  text: {
+    color: 'white',
+  }
  });
 
 
