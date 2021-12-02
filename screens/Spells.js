@@ -36,9 +36,7 @@ const Spells = () =>{
          {/* displays each item in each container*/}
         {state.slice(1).map(item => (
           <View style={styles.spellContainer} key={item.id.get()}>
-          
           <SpellTitle item={ item }/>
-          
            {/* pop up that gives users options to: Delete, Edit, Rename */}
           <SpellsModal item={ item }/>   
         </View>

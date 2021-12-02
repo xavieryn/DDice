@@ -9,12 +9,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const windowHeight = Dimensions.get('window').height;
 
 const SpellTitle = ( { item } ) =>{
-    const [newText, onChangeText] = React.useState( item.text.get());
-
+  //title = spell text | adds state
+  const [newText, onChangeText] = React.useState( item.text.get());
+  // changes text when user inputs
   return ( 
-    
-       
-          
     <TextInput
        style={styles.spellText}
         value={newText}
@@ -47,6 +45,7 @@ const styles = StyleSheet.create ({
     fontSize: 20,
     color: '#4A3D59',
     fontWeight: 'bold',
+    //fontFamily: 'Avenir Next LT Pro Demi'
   },
   container: {
     flex: 1,

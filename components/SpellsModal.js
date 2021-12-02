@@ -4,13 +4,9 @@ import { useState, none } from '@hookstate/core';
 import _spellsObj from '../components/DDGlobal';
 import { TextInput } from "react-native-gesture-handler";
 
-
 const App = ( { item } ) => {
   const [modalVisible, setModalVisible] = React.useState(false);
-  const state = useState(_spellsObj);
-  const [newText, onChangeText] = React.useState( item.text.get());
   
-  console.log(item.text.get())
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -22,11 +18,11 @@ const App = ( { item } ) => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            {/*<Text style={styles.modalText}>Settings</Text>*/}
+            {/* spell text */}
             <Text style={styles.text}>
               {item.text.get()}
             </Text>
-
+            {/* deletes item */}
             <TouchableOpacity 
             onPress={() => {
               item.set(none)}}
@@ -35,11 +31,11 @@ const App = ( { item } ) => {
                 Delete
               </Text>
             </TouchableOpacity>
-            
+            {/* edits item | no function */}
             <TouchableOpacity style={[styles.button, styles.buttonClose]}>
               <Text> Edit </Text>
             </TouchableOpacity>
-            
+            {/* closes item */}
             <TouchableOpacity
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
@@ -54,12 +50,10 @@ const App = ( { item } ) => {
         style={[styles.button, styles.buttonOpen]}
         onPress={() => setModalVisible(true)}
       >
-        
         <Image
           source={require('../assets/dots.png')}
           style={styles.image}
         />
-
       </Pressable>
     </View>
   );
