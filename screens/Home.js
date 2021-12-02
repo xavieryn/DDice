@@ -11,7 +11,6 @@ export default function Home() {
     <View style={styles.container}>
       <View
         style={{
-          backgroundColor: '#231942',
           borderBottomEndRadius: 5,
           borderBottomStartRadius: 5,
         }}>
