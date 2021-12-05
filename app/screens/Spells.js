@@ -4,8 +4,9 @@ import SpellsModal from '../components/SpellsModal';
 import SpellTitle from '../components/SpellTitle';
 //import { useStore, setStore } from "../components/DDGlobal";
 import { useState } from '@hookstate/core';
-import _spellsObj  from '../components/DDGlobal';
+import value  from '../components/DDGlobal';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -13,10 +14,8 @@ const Spells = () =>{
   // title of screen
   const [title, setTitle] = React.useState('Spells');
   //  able to change state of screen
-  const state = useState(_spellsObj);
-  console.log(state);
-    
-
+  const state = useState(value);
+  
   return ( 
     <View style={styles.container}> 
      <View
@@ -31,12 +30,14 @@ const Spells = () =>{
       </View>
        {/* button that refers to function called CodingSucks */}
       
-
       <ScrollView style={styles.innerContainer}>
          {/* displays each item in each container*/}
         {state.slice(1).map(item => (
-          <View style={styles.spellContainer} key={item.id.get()}>
+          
+          <View style={styles.spellContainer} key={item.id.get()} >
+          
           <SpellTitle item={ item }/>
+
            {/* pop up that gives users options to: Delete, Edit, Rename */}
           <SpellsModal item={ item }/>   
         </View>

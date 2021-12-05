@@ -31,10 +31,6 @@ const App = ( { item } ) => {
                 Delete
               </Text>
             </TouchableOpacity>
-            {/* edits item | no function */}
-            <TouchableOpacity style={[styles.button, styles.buttonClose]}>
-              <Text> Edit </Text>
-            </TouchableOpacity>
             {/* closes item */}
             <TouchableOpacity
               style={[styles.button, styles.buttonClose]}

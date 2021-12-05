@@ -11,7 +11,7 @@ https://github.com/Templarian/MaterialDesign-React
 
 import * as React from 'react';
 import { StyleSheet, View } from "react-native";
-import BottomNav from './components/BottomNav';
+import BottomNav from './app/components/BottomNav';
 
 const App = () => {
   
