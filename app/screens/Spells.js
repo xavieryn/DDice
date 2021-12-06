@@ -14,11 +14,6 @@ const Spells = () =>{
   const [title, setTitle] = React.useState('Spells');
   const [spellMap, setSpellMap] = React.useState([])
   
-  // not really useful
-  const onAddSpell = async () => {
-    const spell = {key: 3, text: "hellooooo"}
-    await AsyncStorageLib.setItem('spellTest', JSON.stringify(spell));
-  }
   useEffect ( () => {
     onCheckSpell();
   })
@@ -41,11 +36,6 @@ const Spells = () =>{
         <Text style={styles.header}>{title}</Text>
       </View>
        {/* button that refers to function called CodingSucks */}
-      <View>
-        <TouchableOpacity onPress={onAddSpell}>
-          <Text> add spell </Text>
-        </TouchableOpacity>
-      </View>
       <View>
         <TouchableOpacity onPress={onCheckSpell}>
           <Text> check spell </Text>

@@ -7,8 +7,6 @@ import {
   TextInput,
   Modal,
 } from 'react-native';
-
-import Constants from 'expo-constants';
 import { Picker } from '@react-native-picker/picker';
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
@@ -16,10 +14,8 @@ import AsyncStorageLib from '@react-native-async-storage/async-storage';
 import DDButton from '../components/DDButton';
 import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
-import { useState } from '@hookstate/core';
 
 // or any pure javascript modules available in npm
-import { Card } from 'react-native-paper';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -33,10 +29,9 @@ export default function create() {
   const [diceCount, setDiceCount] = React.useState(['', '', '', '', '']);
   const [index, setIndex] = React.useState(0);
   const [spellName, setSpellName] = React.useState('');
-  const state = useState(_spellsObj);
 
   const handleOnSubmit = async () => {
-    const newSpell = [{
+    const newSpell = {
       text: spellName,
       d4: diceCount[index],
       d6: diceCount[index],
@@ -44,9 +39,15 @@ export default function create() {
       d10: diceCount[index],
       d12: diceCount[index],
       id: uuidv4()
-    }]
+    };
+    console.log(newSpell);
+    console.log(spellName);
+    const result = await AsyncStorageLib.getItem('spellTest');
+    let spells = [];
+    if (result !== null) spells = JSON.parse(result);
 
-    await AsyncStorageLib.setItem('asyncTest', JSON.stringify(newSpell));
+    const updatedSpells = [...spells, newSpell];
+    await AsyncStorageLib.setItem('spellTest', JSON.stringify(updatedSpells));
   }
   return (
     <View style={styles.container}>

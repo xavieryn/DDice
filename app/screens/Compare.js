@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import {
   Text,
   View,
@@ -9,12 +9,12 @@ import {
 } from 'react-native';
 import Constants from 'expo-constants';
 import { Picker } from '@react-native-picker/picker';
+import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
 // You can import from local files
 import DDButton from '../components/DDButton';
 import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
-import { useState } from '@hookstate/core';
 
 
 // or any pure javascript modules available in npm
@@ -27,8 +27,16 @@ const windowHeight = Dimensions.get('window').height;
 export default function compare() {
   
   const [title, setTitle] = React.useState('Create Spell');
-  const state = useState(_spellsObj);
   const [selectedSpell, setSelectedSpell] = React.useState();
+  const [spellMap, setSpellMap] = React.useState([])
+  useEffect ( () => {
+    onCheckSpell();
+  })
+  const onCheckSpell= async () => {
+    const result = await AsyncStorageLib.getItem('spellTest');
+    if (result !== null) setSpellMap(JSON.parse(result));
+    //console.log(spellMap)
+  }
 
   return (
     <View style={styles.container}>
@@ -51,8 +59,8 @@ export default function compare() {
         <Picker
           selectedValue={selectedSpell}
           onValueChange={(itemValue, itemIndex) => setSelectedSpell(itemValue)}>
-          {state.map((spell) => (
-            <Picker.Item label={spell.text.get()} value={spell.id.get()}  key={spell.id.get()} />
+          {spellMap.map((spell) => (
+            <Picker.Item label={spell.text} value={spell.id}  key={spell.id} />
           ))}
         </Picker>
       </View>

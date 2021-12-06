@@ -1,14 +1,13 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView,  Dimensions, TextInput} from 'react-native'; 
 import SpellsModal from './SpellsModal';
-import { useState } from '@hookstate/core';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const windowHeight = Dimensions.get('window').height;
 
 const SpellTitle = ( { item } ) =>{
   //title = spell text | adds state
-  const [newText, onChangeText] = React.useState( item.text);
+  const [newText, onChangeText] = React.useState(item.text);
   // changes text when user inputs
   return ( 
     <TextInput

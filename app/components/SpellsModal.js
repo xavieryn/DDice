@@ -1,11 +1,9 @@
 import React from "react";
 import { Alert, Modal, StyleSheet, Text, TouchableOpacity, Pressable, View, Image } from "react-native";
-import { useState, none } from '@hookstate/core';
 import { TextInput } from "react-native-gesture-handler";
 import AsyncStorageLib from "@react-native-async-storage/async-storage";
 
 const App = ( { item } ) => {
-  const [spellDelete, setSpellsDelete] = React.useState([]);
   const [modalVisible, setModalVisible] = React.useState(false);
 
   
@@ -15,13 +13,10 @@ const App = ( { item } ) => {
     const result = await AsyncStorageLib.getItem('spellTest');
     let spells = [];
     if (result !== null) spells = JSON.parse(result);
-
-    console.log(spells + ' from list');
-    // for some reason my filter deletes everything which it should not
+    
+    // for some reason my code deletes all Create.js spells 
+    // when I am only trying to delete one
     const updatedSpells = spells.filter(s => s.key !== item.key);
-    console.log(spells[0].key, spells[1].key, spells[2].key);
-    setSpellsDelete(updatedSpells);
-    console.log(updatedSpells)
     await AsyncStorageLib.setItem('spellTest', JSON.stringify(updatedSpells));
   }
   return (
