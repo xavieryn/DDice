@@ -15,7 +15,6 @@ import DDButton from '../components/DDButton';
 import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
 import { useState } from '@hookstate/core';
-import _spellsObj  from '../components/DDGlobal';
 
 
 // or any pure javascript modules available in npm

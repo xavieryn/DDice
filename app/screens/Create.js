@@ -10,13 +10,13 @@ import {
 
 import Constants from 'expo-constants';
 import { Picker } from '@react-native-picker/picker';
+import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
 // You can import from local files
 import DDButton from '../components/DDButton';
 import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
 import { useState } from '@hookstate/core';
-import _spellsObj, {none} from '../components/DDGlobal';
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
@@ -35,6 +35,19 @@ export default function create() {
   const [spellName, setSpellName] = React.useState('');
   const state = useState(_spellsObj);
 
+  const handleOnSubmit = async () => {
+    const newSpell = [{
+      text: spellName,
+      d4: diceCount[index],
+      d6: diceCount[index],
+      d8: diceCount[index],
+      d10: diceCount[index],
+      d12: diceCount[index],
+      id: uuidv4()
+    }]
+
+    await AsyncStorageLib.setItem('asyncTest', JSON.stringify(newSpell));
+  }
   return (
     <View style={styles.container}>
       <Modal visible={diceSelecter} animationType="slide">
@@ -142,17 +155,7 @@ export default function create() {
                 borderRadius: 2,
                 justifyContent: 'center',
               }}
-              onPress={() => {
-                state.merge([{
-                  text: spellName,
-                  d4: diceCount[index],
-                  d6: diceCount[index],
-                  d8: diceCount[index],
-                  d10: diceCount[index],
-                  d12: diceCount[index],
-                  id: uuidv4()
-                }])
-              }}
+              onPress={handleOnSubmit}
               text="Create Spell"
               textStyle={{
                 color: '#4A3D59',

@@ -10,7 +10,7 @@ import Settings from '../screens/Settings.js';
 
 
 const BottomNav = () => {
-    const [index, setIndex] = React.useState(0);
+    const [index, setIndex] = React.useState(2);
   const [routes] = React.useState([
     { key: 'spells', title: 'Spells', icon: 'fire', color: '#231942' },
     { key: 'create', title: 'Create', icon: 'auto-fix', color: '#231942' },

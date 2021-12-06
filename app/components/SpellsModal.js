@@ -1,12 +1,29 @@
 import React from "react";
 import { Alert, Modal, StyleSheet, Text, TouchableOpacity, Pressable, View, Image } from "react-native";
 import { useState, none } from '@hookstate/core';
-import _spellsObj from '../components/DDGlobal';
 import { TextInput } from "react-native-gesture-handler";
+import AsyncStorageLib from "@react-native-async-storage/async-storage";
 
 const App = ( { item } ) => {
+  const [spellDelete, setSpellsDelete] = React.useState([]);
   const [modalVisible, setModalVisible] = React.useState(false);
+
   
+
+  const deleteSpell = async () => {
+    console.log('deleteSpell')
+    const result = await AsyncStorageLib.getItem('spellTest');
+    let spells = [];
+    if (result !== null) spells = JSON.parse(result);
+
+    console.log(spells + ' from list');
+    // for some reason my filter deletes everything which it should not
+    const updatedSpells = spells.filter(s => s.key !== item.key);
+    console.log(spells[0].key, spells[1].key, spells[2].key);
+    setSpellsDelete(updatedSpells);
+    console.log(updatedSpells)
+    await AsyncStorageLib.setItem('spellTest', JSON.stringify(updatedSpells));
+  }
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -20,12 +37,11 @@ const App = ( { item } ) => {
           <View style={styles.modalView}>
             {/* spell text */}
             <Text style={styles.text}>
-              {item.text.get()}
+              {item.text}
             </Text>
             {/* deletes item */}
             <TouchableOpacity 
-            onPress={() => {
-              item.set(none)}}
+            onPress={deleteSpell}
             style={[styles.button, styles.buttonClose]}>
               <Text>
                 Delete

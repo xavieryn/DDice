@@ -1,10 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView,  Dimensions, TextInput} from 'react-native'; 
 import SpellsModal from '../components/SpellsModal';
 import SpellTitle from '../components/SpellTitle';
-//import { useStore, setStore } from "../components/DDGlobal";
-import { useState } from '@hookstate/core';
-import value  from '../components/DDGlobal';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
@@ -12,20 +9,25 @@ import AsyncStorageLib from '@react-native-async-storage/async-storage';
 const windowHeight = Dimensions.get('window').height;
 
 const Spells = () =>{
+  const random = [{key: 10, text: "not actual object"}];
   // title of screen
   const [title, setTitle] = React.useState('Spells');
-  //  able to change state of screen
-  const state = useState(value);
-
-  const onAddSpell = async () => {
-    const spell = {key: 4, text: "pls work"}
-    await AsyncStorageLib.setItem('asyncTest', JSON.stringify(spell));
-  }
-  const onCheckSpell= async () => {
-    const result = await AsyncStorageLib.getItem('asyncTest');
-    console.log(result)
-  }
+  const [spellMap, setSpellMap] = React.useState([])
   
+  // not really useful
+  const onAddSpell = async () => {
+    const spell = {key: 3, text: "hellooooo"}
+    await AsyncStorageLib.setItem('spellTest', JSON.stringify(spell));
+  }
+  useEffect ( () => {
+    onCheckSpell();
+  })
+
+  const onCheckSpell= async () => {
+    const result = await AsyncStorageLib.getItem('spellTest');
+    if (result !== null) setSpellMap(JSON.parse(result));
+    //console.log(spellMap)
+  }
   return ( 
     <View style={styles.container}> 
      <View
@@ -50,10 +52,12 @@ const Spells = () =>{
         </TouchableOpacity>
       </View>
       <ScrollView style={styles.innerContainer}>
-         {/* displays each item in each container*/}
-        {state.slice(1).map(item => (
+         {/* displays each item in each container
+        {state.slice(1).map(item => ( */}
+        
+        {spellMap.slice(1).map(item => (
           
-          <View style={styles.spellContainer} key={item.key.get()} >
+          <View style={styles.spellContainer} key={item.key} >
           
           <SpellTitle item={ item }/>
 
