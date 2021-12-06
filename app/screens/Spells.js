@@ -9,19 +9,19 @@ import AsyncStorageLib from '@react-native-async-storage/async-storage';
 const windowHeight = Dimensions.get('window').height;
 
 const Spells = () =>{
-  const random = [{key: 10, text: "not actual object"}];
   // title of screen
   const [title, setTitle] = React.useState('Spells');
+  // grabs async storage spells and sets to spellMap
   const [spellMap, setSpellMap] = React.useState([])
-  
+  // the first time the screen renders, onCheckSpell function runs, 
+  // and whenever there is a change it rerenders onCheckSpell
   useEffect ( () => {
     onCheckSpell();
   })
-
+  // get async storage and parses it to spellMap state
   const onCheckSpell= async () => {
     const result = await AsyncStorageLib.getItem('spellTest');
     if (result !== null) setSpellMap(JSON.parse(result));
-    //console.log(spellMap)
   }
   return ( 
     <View style={styles.container}> 
