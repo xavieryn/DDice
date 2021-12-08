@@ -16,7 +16,7 @@ import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
 
 // or any pure javascript modules available in npm
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -38,7 +38,7 @@ export default function create() {
       d8: diceCount[index],
       d10: diceCount[index],
       d12: diceCount[index],
-      id: uuidv4()
+      key: uuid()
     };
     console.log(newSpell);
     console.log(spellName);
