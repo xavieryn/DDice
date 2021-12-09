@@ -23,6 +23,9 @@ const Spells = () =>{
     const result = await AsyncStorageLib.getItem('spellTest');
     if (result !== null) setSpellMap(JSON.parse(result));
   }
+  const onCheck = () => {
+    console.log(spellMap);
+  }
   return ( 
     <View style={styles.container}> 
      <View
@@ -37,14 +40,12 @@ const Spells = () =>{
       </View>
        {/* button that refers to function called CodingSucks */}
       <View>
-        <TouchableOpacity onPress={onCheckSpell}>
+        <TouchableOpacity onPress={onCheck}>
           <Text> check spell </Text>
         </TouchableOpacity>
       </View>
       <ScrollView style={styles.innerContainer}>
-         {/* displays each item in each container
-        {state.slice(1).map(item => ( */}
-        
+         {/* displays each item in each container */}        
         {spellMap.slice(1).map(item => (
           
           <View style={styles.spellContainer} key={item.key} >
@@ -57,6 +58,10 @@ const Spells = () =>{
         ))}
         
       </ScrollView>
+      <View style={styles.createSpell}>
+          <Text>Want to create spells?</Text>
+          <TouchableOpacity><Text>Click Here!</Text></TouchableOpacity>
+      </View> 
     </View> 
 
   );
@@ -105,6 +110,12 @@ const styles = StyleSheet.create ({
   },
   text: {
     color: 'white',
+  },
+  createSpell: {
+    flex: 0.1,
+    textAlign: 'center',
+    alignItems: 'center',
+    
   }
  });
 
