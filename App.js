@@ -29,7 +29,7 @@ const App = () => {
   }
 
   const pp = async () => {
-    const starterSpell = [{ key: 0, text: 'Choose a spell', d4:0,d6:0,d8:0,d10:0,d12:0 }]
+    const starterSpell = [{ key: 0, text: 'Choose a spell', d4:0,d6:2,d8:0,d10:0,d12:0 }]
     await AsyncStorageLib.setItem('spellTest', JSON.stringify(starterSpell))
   }
   return (
