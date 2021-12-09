@@ -35,17 +35,15 @@ export default function compare() {
     onCheckSpell();
   })
 
-  let filled = false;
 
   // get async storage and parses it to spellMap state
   const onCheckSpell= async () => {
     const result = await AsyncStorageLib.getItem('spellTest');
     if (result !== null) setSpellMap(JSON.parse(result));
-    filled = true;
   }
 
-  
-  const [selectedSpell, setSelectedSpell] = React.useState();
+  const [selectedSpell2, setselectedSpell2] = React.useState();
+  const [selectedSpell1, setselectedSpell1] = React.useState();
 
   const [graph, setGraph] = React.useState(false);
 
@@ -53,7 +51,7 @@ export default function compare() {
     <View style={styles.container}>
       <Modal visible={graph} animationType="slide">
         <CompareModal
-          data={[...spellMap].filter(s => selectedSpell == s.key).length == 1 ? roll([...spellMap].filter(s => selectedSpell == s.key)[0]) : roll({d4: 0, d6: 2, d8: 0, d10: 0, d12: 0})}
+          data={[...spellMap].filter(s => selectedSpell1 == s.key).length == 1 ? roll([...spellMap].filter(s => selectedSpell1 == s.key)[0]) : roll({d4: 0, d6: 2, d8: 0, d10: 0, d12: 0})}
         />
       </Modal>
       {/*top*/}
@@ -73,8 +71,8 @@ export default function compare() {
           justifyContent: 'space-evenly',
         }}>
         <Picker
-          selectedValue={selectedSpell}
-          onValueChange={(itemValue, itemIndex) => setSelectedSpell(itemValue)}>
+          selectedValue={selectedSpell1}
+          onValueChange={(itemValue, itemIndex) => setselectedSpell1(itemValue)}>
           {spellMap.map((spell) => (
             <Picker.Item label={spell.text} value={spell.key}  key={spell.key} />
           ))}
