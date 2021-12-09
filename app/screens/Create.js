@@ -33,11 +33,11 @@ export default function create() {
   const handleOnSubmit = async () => {
     const newSpell = {
       text: spellName,
-      d4: diceCount[index],
-      d6: diceCount[index],
-      d8: diceCount[index],
-      d10: diceCount[index],
-      d12: diceCount[index],
+      d4: (diceCount[0] != '' ? diceCount[0] : 0),
+      d6: (diceCount[1] != '' ? diceCount[1] : 0),
+      d8: (diceCount[2] != '' ? diceCount[2] : 0),
+      d10: (diceCount[3] != '' ? diceCount[3] : 0),
+      d12: (diceCount[4] != '' ? diceCount[4] : 0),
       key: uuid()
     };
     console.log(newSpell);
