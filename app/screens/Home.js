@@ -5,22 +5,12 @@ const windowHeight = Dimensions.get('window').height;
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 import { set } from 'react-native-reanimated';
 import { v4 as uuid } from 'uuid';
+import { Button } from 'react-native-paper';
 
 export default function Home() {
    const [spells, setSpells] = React.useState([{key:0, text:'Choose a spell'}, {key:1, text: 'firepenisball'}])
 
-   const findSpells = async () => {
-    const result = await AsyncStorageLib.getItem('spellTest');
-    let spells = [];
-    if (result !== null) spells = JSON.parse(result);
-    setSpells(spells);
-    console.log(spells)
-   }
-   const pp = async () => {
-     const spell = {key: uuid(), text:'pls test'};
-     const updatedSpells = [...spells, spell];
-     await AsyncStorageLib.setItem('spellTest', JSON.stringify(updatedSpells))
-   }
+   
   return (
     
     <View style={styles.container}>
@@ -32,16 +22,12 @@ export default function Home() {
         <Image style={{width: windowWidth, height: 200, resizeMode: 'contain'}} source={require('../assets/dndice.png')} />
       </View>
       <View style={styles.innerContainer}>
-        
-        <TouchableOpacity style={styles.button} onPress={findSpells}>
-          <Text>
-            penissss
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={pp}>
-          <Text>
-            print new spell
-          </Text>
+      <Image style={{width: windowWidth, height: 400, resizeMode: 'contain'}} source={require('../assets/beholder.png')} />
+
+      </View>
+      <View style={styles.buttonIntro}>
+        <TouchableOpacity>
+          <Text> penis </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -74,5 +60,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
   },
+  buttonIntro: {
+    flex: 0.25,
+    alignItems: 'center'
+  }
  
 });
