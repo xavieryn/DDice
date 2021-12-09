@@ -85,6 +85,7 @@ export default function create() {
             height: windowHeight / 1.5,
             borderWidth: 0,
           }}>
+          
           <DDdiceSelect
             text={diceCount[0] + 'D4'}
             press={() => {
