@@ -15,7 +15,7 @@ import AsyncStorageLib from '@react-native-async-storage/async-storage';
 import DDButton from '../components/DDButton';
 import DDdiceSelect from '../components/DDdiceSelect';
 import DDModal from '../components/DDModal';
-
+import CompareModal from '../components/CompareModal';
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
@@ -27,7 +27,6 @@ const windowHeight = Dimensions.get('window').height;
 export default function compare() {
   // title of screen
   const [title, setTitle] = React.useState('Create Spell');
-  const [selectedSpell, setSelectedSpell] = React.useState();
   // grabs async storage spells and sets to spellMap
   const [spellMap, setSpellMap] = React.useState([])
   // the first time the screen renders, onCheckSpell function runs, 
@@ -35,14 +34,28 @@ export default function compare() {
   useEffect ( () => {
     onCheckSpell();
   })
+
+  let filled = false;
+
   // get async storage and parses it to spellMap state
   const onCheckSpell= async () => {
     const result = await AsyncStorageLib.getItem('spellTest');
     if (result !== null) setSpellMap(JSON.parse(result));
+    filled = true;
   }
+
+  
+  const [selectedSpell, setSelectedSpell] = React.useState();
+
+  const [graph, setGraph] = React.useState(false);
 
   return (
     <View style={styles.container}>
+      <Modal visible={graph} animationType="slide">
+        <CompareModal
+          data={[...spellMap].filter(s => selectedSpell == s.key).length == 1 ? roll([...spellMap].filter(s => selectedSpell == s.key)[0]) : roll({d4: 0, d6: 2, d8: 0, d10: 0, d12: 0})}
+        />
+      </Modal>
       {/*top*/}
       <View
         style={{
@@ -63,7 +76,7 @@ export default function compare() {
           selectedValue={selectedSpell}
           onValueChange={(itemValue, itemIndex) => setSelectedSpell(itemValue)}>
           {spellMap.map((spell) => (
-            <Picker.Item label={spell.text} value={spell.id}  key={spell.id} />
+            <Picker.Item label={spell.text} value={spell.key}  key={spell.key} />
           ))}
         </Picker>
       </View>
@@ -80,7 +93,7 @@ export default function compare() {
             justifyContent: 'center',
           }}
           onPress={() => {
-            console.log(roll(selectedSpell))
+            setGraph(!graph)
           }}
           text="Visualize"
           textStyle={{
@@ -100,27 +113,27 @@ function roll(spell) {
   
   // add d4
   for (let i = 0; i < spell.d4; i++) {
-    appendItem(dice, [1/4,1/4,1/4,1/4]);
+    dice.push([1/4,1/4,1/4,1/4]);
   }
   
   // add d6
   for (let i = 0; i < spell.d6; i++) {
-    appendItem(dice, [1/6,1/6,1/6,1/6,1/6,1/6]);
+    dice.push([1/6,1/6,1/6,1/6,1/6,1/6]);
   }
   
   // add d8
   for (let i = 0; i < spell.d8; i++) {
-    appendItem(dice, [1/8,1/8,1/8,1/8,1/8,1/8,1/8,1/8]);
+    dice.push([1/8,1/8,1/8,1/8,1/8,1/8,1/8,1/8]);
   }
   
   // add d10
   for (let i = 0; i < spell.d10; i++) {
-    appendItem(dice, [1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10]);
+    dice.push([1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10]);
   }
   
   // add d12
   for (var i = 0; i < spell.d12; i++) {
-    appendItem(dice, [1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12]);
+    dice.push([1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12]);
   }
   
   let answer = findConvolution(dice[0], dice[1]);
@@ -136,7 +149,7 @@ function findConvolution(a, b) {
   let output = [];
   
   for (let i = 0; i < (a.length + b.length - 1); i++) {
-    appendItem(output, []);
+    output.push(0);
   }
   
   for(let i = 0; i < a.length; i++)   {
@@ -147,7 +160,6 @@ function findConvolution(a, b) {
   
   return (output);
 }
-
 
 const styles = StyleSheet.create({
   container: {
