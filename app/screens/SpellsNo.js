@@ -8,7 +8,7 @@ import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
 const windowHeight = Dimensions.get('window').height;
 
-const Spells = () =>{
+const SpellsNo = () =>{
   // title of screen
   const [title, setTitle] = React.useState('Spells');
   // grabs async storage spells and sets to spellMap
@@ -58,7 +58,12 @@ const Spells = () =>{
         ))}
         
       </ScrollView>
-    </View>
+      <View style={styles.createSpell}>
+          <Text>Want to create spells?</Text>
+          <TouchableOpacity><Text>Click Here!</Text></TouchableOpacity>
+      </View> 
+    </View> 
+
   );
 }
 
@@ -115,4 +120,4 @@ const styles = StyleSheet.create ({
  });
 
 
-export default Spells;
+export default SpellsNo;
