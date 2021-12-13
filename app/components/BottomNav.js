@@ -6,7 +6,7 @@ import Spells from "../screens/Spells";
 import Create from '../screens/Create.js';
 import Compare from '../screens/Compare.js';
 import Settings from '../screens/Settings.js';
-
+import RouteHandlerSpells from '../screens/RouteHandlerSpells';
 
 
 const BottomNav = () => {
@@ -20,7 +20,7 @@ const BottomNav = () => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    spells: Spells,
+    spells: RouteHandlerSpells,
     create: Create,
     home: Home,
     chart: Compare, 

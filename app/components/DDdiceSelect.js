@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import { v4 as uuid } from 'uuid';
 import { Card } from 'react-native-paper';
 import DDButton from './DDButton';
 import DDModal from './DDButton';
@@ -23,7 +24,7 @@ export default function DDdiceSelect(props) {
         alignItems: 'center',
         justifyContent: 'space-evenly',
       }}>
-      <Card style={styles.box}>
+      <Card style={styles.box} >
         <Text style={styles.paragraph}>{props.text}</Text>
       </Card>
       <DDButton

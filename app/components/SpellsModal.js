@@ -6,8 +6,6 @@ import AsyncStorageLib from "@react-native-async-storage/async-storage";
 const App = ( { item } ) => {
   const [modalVisible, setModalVisible] = React.useState(false);
 
-  
-
   const deleteSpell = async () => {
     console.log('deleteSpell')
     const result = await AsyncStorageLib.getItem('spellTest');

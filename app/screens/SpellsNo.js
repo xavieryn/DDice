@@ -39,29 +39,12 @@ const SpellsNo = () =>{
         <Text style={styles.header}>{title}</Text>
       </View>
        {/* button that refers to function called CodingSucks */}
-      <View>
-        <TouchableOpacity onPress={onCheck}>
-          <Text> check spell </Text>
-        </TouchableOpacity>
+     
+      <View style={styles.innerContainer}>   
+        <Text>Want to create spells?</Text>
+        <TouchableOpacity><Text>Click Here!</Text></TouchableOpacity>
       </View>
-      <ScrollView style={styles.innerContainer}>
-         {/* displays each item in each container */}        
-        {spellMap.slice(1).map(item => (
-          
-          <View style={styles.spellContainer} key={item.key} >
-          
-          <SpellTitle item={ item }/>
-
-           {/* pop up that gives users options to: Delete, Edit, Rename */}
-          <SpellsModal item={ item }/>   
-        </View>
-        ))}
-        
-      </ScrollView>
-      <View style={styles.createSpell}>
-          <Text>Want to create spells?</Text>
-          <TouchableOpacity><Text>Click Here!</Text></TouchableOpacity>
-      </View> 
+      
     </View> 
 
   );
@@ -107,6 +90,8 @@ const styles = StyleSheet.create ({
   innerContainer: {
     borderWidth: 1,
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     color: 'white',

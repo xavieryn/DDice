@@ -76,7 +76,7 @@ export default function create() {
           paddingHorizontal: 9,
           alignItems: 'center',
         }}>
-        {/* dice selection menue */}
+        {/* dice selection menu */}
         <View
           style={{
             flex: 1.2,
