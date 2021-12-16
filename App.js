@@ -10,7 +10,7 @@ https://github.com/Templarian/MaterialDesign-React
 
 
 import React, { useEffect } from 'react';
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 import BottomNav from './app/components/BottomNav';
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
@@ -34,9 +34,9 @@ const App = () => {
   }
   return (
 
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <BottomNav />
-    </View>
+    </SafeAreaView>
 
   );
 };
