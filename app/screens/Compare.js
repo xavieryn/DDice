@@ -144,7 +144,7 @@ function roll(spell) {
 
   let tempList = [];
 
-  for (let i = 0; i < dice.length - 1; i++) {
+  for (let i = 0; i < dice.length; i++) {
     tempList.push(0);
   }
   
