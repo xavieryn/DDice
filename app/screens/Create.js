@@ -6,6 +6,7 @@ import {
   Dimensions,
   TextInput,
   Modal,
+  SafeAreaView,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
@@ -50,7 +51,7 @@ export default function create() {
     await AsyncStorageLib.setItem('spellTest', JSON.stringify(updatedSpells));
   }
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Modal visible={diceSelecter} animationType="slide">
         <DDModal
           setDiceSelecter={setDiceSelecter}
@@ -170,7 +171,7 @@ export default function create() {
       </View>
 
       {/*bottom*/}
-    </View>
+    </SafeAreaView>
   );
 }
 

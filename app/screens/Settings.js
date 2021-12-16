@@ -4,6 +4,7 @@ import {
   View,
   StyleSheet,
   Dimensions,
+  SafeAreaView,
 } from 'react-native';
 
 const windowHeight = Dimensions.get('window').height;
@@ -14,7 +15,7 @@ export default function create() {
 
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {/*top*/}
       <View
         style={{
@@ -25,7 +26,7 @@ export default function create() {
         <Text style={styles.header}>{title}</Text>
       </View>
 
-    </View>
+    </SafeAreaView>
   );
 }
 

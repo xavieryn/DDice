@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Text, View, StyleSheet, ScrollView,  Dimensions, TextInput} from 'react-native'; 
+import { Text, View, StyleSheet, ScrollView,  Dimensions, SafeAreaView} from 'react-native'; 
 import SpellsModal from '../components/SpellsModal';
 import SpellTitle from '../components/SpellTitle';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -27,7 +27,7 @@ const Spells = () =>{
     console.log(spellMap);
   }
   return ( 
-    <View style={styles.container}> 
+    <SafeAreaView style={styles.container}> 
      <View
         style={{
           backgroundColor: '#231942',
@@ -58,7 +58,7 @@ const Spells = () =>{
         ))}
         
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Dimensions, Image, SafeAreaView } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
@@ -13,7 +13,7 @@ export default function Home() {
    
   return (
     
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View
         style={{
           borderBottomEndRadius: 5,
@@ -30,7 +30,7 @@ export default function Home() {
           <Text> penis </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
