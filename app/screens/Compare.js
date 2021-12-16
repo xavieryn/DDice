@@ -51,7 +51,8 @@ export default function compare() {
     <View style={styles.container}>
       <Modal visible={graph} animationType="slide">
         <CompareModal
-          data={[...spellMap].filter(s => selectedSpell1 == s.key).length == 1 ? roll([...spellMap].filter(s => selectedSpell1 == s.key)[0]) : roll({d4: 0, d6: 2, d8: 0, d10: 0, d12: 0})}
+          data1={[...spellMap].filter(s => selectedSpell1 == s.key).length == 1 ? roll([...spellMap].filter(s => selectedSpell1 == s.key)[0]) : roll({d4: 0, d6: 2, d8: 0, d10: 0, d12: 0})}
+          data2={roll({d4: 0, d6: 0, d8: 0, d10: 4, d12: 0})}
         />
       </Modal>
       {/*top*/}
@@ -138,9 +139,15 @@ function roll(spell) {
   
   for (let k = 2; k < dice.length; k++)   {
     answer = findConvolution(answer, dice[k]);
-  } 
+  }
+
+  let tempList = [];
+
+  for (let i = 0; i < dice.length - 1; i++) {
+    tempList.push(0);
+  }
   
-  return (answer);
+  return ([...tempList,...answer]);
 }
 
 function findConvolution(a, b) {
