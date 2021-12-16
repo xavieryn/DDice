@@ -20,7 +20,7 @@ const BottomNav = () => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    spells: RouteHandlerSpells,
+    spells: Spells,
     create: Create,
     home: Home,
     chart: Compare, 
