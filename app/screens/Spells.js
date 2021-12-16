@@ -27,7 +27,7 @@ const Spells = () =>{
     console.log(spellMap);
   }
   return ( 
-    <View style={styles.container}> 
+    <View style={styles.container}>
      <View
         style={{
           backgroundColor: '#231942',
