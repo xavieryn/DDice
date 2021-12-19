@@ -34,9 +34,9 @@ const App = () => {
   }
   return (
 
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <BottomNav />
-    </SafeAreaView>
+    </View>
 
   );
 };
