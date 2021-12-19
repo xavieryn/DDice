@@ -12,25 +12,26 @@ export default function Home() {
 
    
   return (
-    
-    <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          borderBottomEndRadius: 5,
-          borderBottomStartRadius: 5,
-        }}>
-        <Image style={{width: windowWidth, height: 200, resizeMode: 'contain'}} source={require('../assets/dndice.png')} />
-      </View>
-      <View style={styles.innerContainer}>
-      <Image style={{width: windowWidth, height: 400, resizeMode: 'contain'}} source={require('../assets/beholder.png')} />
+    <>
+      <SafeAreaView style={styles.container}>
+        <View
+          style={{
+            borderBottomEndRadius: 5,
+            borderBottomStartRadius: 5,
+          }}>
+          <Image style={{width: windowWidth, height: 200, resizeMode: 'contain'}} source={require('../assets/dndice.png')} />
+        </View>
+        <View style={styles.innerContainer}>
+        <Image style={{width: windowWidth, height: 400, resizeMode: 'contain'}} source={require('../assets/beholder.png')} />
 
-      </View>
-      <View style={styles.buttonIntro}>
-        <TouchableOpacity>
-          <Text> penis </Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+        </View>
+        <View style={styles.buttonIntro}>
+          <TouchableOpacity>
+            <Text> penis </Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    </>
   );
 }
 

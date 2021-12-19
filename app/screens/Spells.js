@@ -27,38 +27,42 @@ const Spells = () =>{
     console.log(spellMap);
   }
   return ( 
-    <SafeAreaView style={styles.container}> 
-     <View
-        style={{
-          backgroundColor: '#231942',
-          borderBottomEndRadius: 5,
-          borderBottomStartRadius: 5,
-          marginBottom: 15,
-        }}>
-      {/* displays title */}
-        <Text style={styles.header}>{title}</Text>
-      </View>
-       {/* button that refers to function called CodingSucks */}
-      <View>
-        <TouchableOpacity onPress={onCheck}>
-          <Text> check spell </Text>
-        </TouchableOpacity>
-      </View>
-      <ScrollView style={styles.innerContainer}>
-         {/* displays each item in each container */}        
-        {spellMap.slice(1).map(item => (
-          
-          <View style={styles.spellContainer} key={item.key} >
-          
-          <SpellTitle item={ item }/>
+    <>
+      <SafeAreaView style={{ flex:0, backgroundColor: '#231942' }}/>
 
-           {/* pop up that gives users options to: Delete, Edit, Rename */}
-          <SpellsModal item={ item }/>   
+      <SafeAreaView style={styles.container}> 
+      <View
+          style={{
+            backgroundColor: '#231942',   
+            borderBottomEndRadius: 5,
+            borderBottomStartRadius: 5,
+            marginBottom: 15,
+          }}>
+        {/* displays title */}
+          <Text style={styles.header}>{title}</Text>
         </View>
-        ))}
-        
-      </ScrollView>
-    </SafeAreaView>
+        {/* button that refers to function called CodingSucks */}
+        <View>
+          <TouchableOpacity onPress={onCheck}>
+            <Text> check spell </Text>
+          </TouchableOpacity>
+        </View>
+        <ScrollView style={styles.innerContainer}>
+          {/* displays each item in each container */}        
+          {spellMap.slice(1).map(item => (
+            
+            <View style={styles.spellContainer} key={item.key} >
+            
+            <SpellTitle item={ item }/>
+
+            {/* pop up that gives users options to: Delete, Edit, Rename */}
+            <SpellsModal item={ item }/>   
+          </View>
+          ))}
+          
+        </ScrollView>
+      </SafeAreaView>
+  </>
   );
 }
 

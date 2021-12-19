@@ -15,18 +15,21 @@ export default function create() {
 
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/*top*/}
-      <View
-        style={{
-          backgroundColor: '#231942',
-          borderBottomEndRadius: 5,
-          borderBottomStartRadius: 5,
-        }}>
-        <Text style={styles.header}>{title}</Text>
-      </View>
+    <>
+      <SafeAreaView style={{ flex:0, backgroundColor: '#231942' }}/>
+      <SafeAreaView style={styles.container}>
+        {/*top*/}
+        <View
+          style={{
+            backgroundColor: '#231942',
+            borderBottomEndRadius: 5,
+            borderBottomStartRadius: 5,
+          }}>
+          <Text style={styles.header}>{title}</Text>
+        </View>
 
-    </SafeAreaView>
+      </SafeAreaView>
+  </>
   );
 }
 
