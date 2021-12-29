@@ -8,7 +8,7 @@ import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
 const windowHeight = Dimensions.get('window').height;
 
-const Spells = () =>{
+const Spells = ({ navigation }) =>{
   // title of screen
   const [title, setTitle] = React.useState('Spells');
   // grabs async storage spells and sets to spellMap
@@ -43,8 +43,11 @@ const Spells = () =>{
         </View>
         {/* button that refers to function called CodingSucks */}
         <View>
-          <TouchableOpacity onPress={onCheck}>
-            <Text> check spell </Text>
+          {/* i have to figure out how to import spells with it 
+           i just remembered that Ryan wanted it as a pop up and it 
+          would basically be a copy and paste of that code.  */}
+          <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+            <Text> Navigate if u have no spells </Text>
           </TouchableOpacity>
         </View>
         <ScrollView style={styles.innerContainer}>
