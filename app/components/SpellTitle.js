@@ -1,20 +1,29 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView,  Dimensions, TextInput} from 'react-native'; 
-import SpellsModal from './SpellsModal';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import AsyncStorageLib from '@react-native-async-storage/async-storage';
 const windowHeight = Dimensions.get('window').height;
 
 const SpellTitle = ( { item } ) =>{
   //title = spell text | adds state
   const [newText, onChangeText] = React.useState(item.text);
   // changes text when user inputs
+  const changeName = async () => {
+    const result = await AsyncStorageLib.getItem('spellTest');
+    let spells = [];
+    if (result !== null) spells = JSON.parse(result);
+    // this part changes whole object to string rather than just changing the item    
+    //const updatedSpells = spells.find(spells => spells.key == item.key).text = newText;
+    for (let v of spells) if (v.key == item.key) v.text = newText;
+
+    //console.log(updatedSpells)
+    await AsyncStorageLib.setItem('spellTest', JSON.stringify(spells));
+  }
   return ( 
     <TextInput
-       style={styles.spellText}
-        value={newText}
-        onChangeText={onChangeText}
-       onSubmitEditing={ () => item.text.set(() => newText)}            
+      style={styles.spellText}
+      value={newText}
+      onChangeText={onChangeText}
+      onSubmitEditing={ changeName}            
     />
         
   );

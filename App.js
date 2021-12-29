@@ -11,7 +11,6 @@ https://github.com/Templarian/MaterialDesign-React
 import NewBottomNav from './app/components/NewBottomNav';
 import React, { useEffect } from 'react';
 import { StyleSheet, View, SafeAreaView } from "react-native";
-import BottomNav from './app/components/BottomNav';
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
 
@@ -21,11 +20,18 @@ const App = () => {
     check();
   })
   const check = async () => {
+    // gets object 
     const result = await AsyncStorageLib.getItem('spellTest')
+    // stores it
     let check = [];
     if (result !== null) check = JSON.parse(result);
-    const updatedCheck = check.filter(c => c.key !== 0);
-    if (updatedCheck.length < 1) pp();
+    else if (result == null) pp();
+    if (check == null) pp();
+    // const updatedCheck = check.filter(c => c.key !== 0);
+    // console.log(updatedCheck.length + ' is length');
+    // console.log('hiiiiii')
+    // if (updatedCheck.length < 1) pp();
+
   }
 
   const pp = async () => {
