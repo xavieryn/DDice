@@ -10,7 +10,7 @@ import Compare from '../screens/Compare.js';
 import Settings from '../screens/Settings.js';
 
 const Tab = createMaterialBottomTabNavigator();
-
+// hi
 export default function NewBottomNav() {
   return (
     <NavigationContainer>
