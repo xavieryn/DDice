@@ -1,6 +1,8 @@
 
 import * as React from 'react';
-import { BottomNavigation, Text, View } from 'react-native-paper';
+import { BottomNavigation } from 'react-native-paper';
+import { View, StyleSheet, SafeAreaView } from 'react-native'; 
+
 import Home from "../screens/Home";
 import Spells from "../screens/Spells";
 import Create from '../screens/Create.js';
@@ -28,15 +30,22 @@ const BottomNav = () => {
   });
 
   return (
-    
-    <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-      
-    />
+    <View style={styles.container}>
+      <BottomNavigation
+        navigationState={{ index, routes }}
+        onIndexChange={setIndex}
+        renderScene={renderScene}
+        
+      />
+    </View>
     
   );
 };
+const styles = StyleSheet.create ({
+  container: {
+    flex: 1,
+    
+  }
+});
 
 export default BottomNav;

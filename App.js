@@ -8,7 +8,7 @@ https://github.com/callstack/react-native-paper or https://callstack.github.io/r
 https://github.com/Templarian/MaterialDesign-React
 */
 
-
+import NewBottomNav from './app/components/NewBottomNav';
 import React, { useEffect } from 'react';
 import { StyleSheet, View, SafeAreaView } from "react-native";
 import BottomNav from './app/components/BottomNav';
@@ -35,7 +35,7 @@ const App = () => {
   return (
 
     <View style={styles.container}>
-      <BottomNav />
+      <NewBottomNav />
     </View>
 
   );

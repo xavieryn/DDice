@@ -8,7 +8,7 @@ import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
 const windowHeight = Dimensions.get('window').height;
 
-const Spells = () =>{
+const Spells = ({ navigation }) =>{
   // title of screen
   const [title, setTitle] = React.useState('Spells');
   // grabs async storage spells and sets to spellMap
@@ -27,38 +27,45 @@ const Spells = () =>{
     console.log(spellMap);
   }
   return ( 
-    <SafeAreaView style={styles.container}> 
-     <View
-        style={{
-          backgroundColor: '#231942',
-          borderBottomEndRadius: 5,
-          borderBottomStartRadius: 5,
-          marginBottom: 15,
-        }}>
-      {/* displays title */}
-        <Text style={styles.header}>{title}</Text>
-      </View>
-       {/* button that refers to function called CodingSucks */}
-      <View>
-        <TouchableOpacity onPress={onCheck}>
-          <Text> check spell </Text>
-        </TouchableOpacity>
-      </View>
-      <ScrollView style={styles.innerContainer}>
-         {/* displays each item in each container */}        
-        {spellMap.slice(1).map(item => (
-          
-          <View style={styles.spellContainer} key={item.key} >
-          
-          <SpellTitle item={ item }/>
+    <>
+      <SafeAreaView style={{ flex:0, backgroundColor: '#231942' }}/>
 
-           {/* pop up that gives users options to: Delete, Edit, Rename */}
-          <SpellsModal item={ item }/>   
+      <SafeAreaView style={styles.container}> 
+      <View
+          style={{
+            backgroundColor: '#231942',   
+            borderBottomEndRadius: 5,
+            borderBottomStartRadius: 5,
+            marginBottom: 15,
+          }}>
+        {/* displays title */}
+          <Text style={styles.header}>{title}</Text>
         </View>
-        ))}
-        
-      </ScrollView>
-    </SafeAreaView>
+        {/* button that refers to function called CodingSucks */}
+        <View>
+          {/* i have to figure out how to import spells with it 
+           i just remembered that Ryan wanted it as a pop up and it 
+          would basically be a copy and paste of that code.  */}
+          <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+            <Text> Navigate if u have no spells </Text>
+          </TouchableOpacity>
+        </View>
+        <ScrollView style={styles.innerContainer}>
+          {/* displays each item in each container */}        
+          {spellMap.slice(1).map(item => (
+            
+            <View style={styles.spellContainer} key={item.key} >
+            
+            <SpellTitle item={ item }/>
+
+            {/* pop up that gives users options to: Delete, Edit, Rename */}
+            <SpellsModal item={ item }/>   
+          </View>
+          ))}
+          
+        </ScrollView>
+      </SafeAreaView>
+  </>
   );
 }
 
