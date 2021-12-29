@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#9988A4',
     paddingBottom: windowHeight / 20,
     justifyContent: 'space-between',
+    flexDirection: 'column'
   },
   paragraph: {
     margin: 0,
