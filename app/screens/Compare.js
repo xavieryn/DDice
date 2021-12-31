@@ -55,7 +55,7 @@ export default function compare() {
         <Modal visible={graph} animationType="slide">
           <CompareModal
             data1={[...spellMap].filter(s => selectedSpell1 == s.key).length == 1 ? roll([...spellMap].filter(s => selectedSpell1 == s.key)[0]) : roll({d4: 0, d6: 2, d8: 0, d10: 0, d12: 0})}
-            data2={roll({d4: 0, d6: 0, d8: 0, d10: 4, d12: 0})}
+            data2={[...spellMap].filter(s => selectedSpell2 == s.key).length == 1 ? roll([...spellMap].filter(s => selectedSpell2 == s.key)[0]) : roll({d4: 0, d6: 2, d8: 0, d10: 0, d12: 0})}
           />
         </Modal>
         {/*top*/}
@@ -77,6 +77,13 @@ export default function compare() {
           <Picker
             selectedValue={selectedSpell1}
             onValueChange={(itemValue, itemIndex) => setselectedSpell1(itemValue)}>
+            {spellMap.map((spell) => (
+              <Picker.Item label={spell.text} value={spell.key}  key={spell.key} />
+            ))}
+          </Picker>
+          <Picker
+            selectedValue={selectedSpell2}
+            onValueChange={(itemValue, itemIndex) => setselectedSpell2(itemValue)}>
             {spellMap.map((spell) => (
               <Picker.Item label={spell.text} value={spell.key}  key={spell.key} />
             ))}
