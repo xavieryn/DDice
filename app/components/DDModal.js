@@ -54,7 +54,7 @@ export default function DDModal(props) {
           selectedValue={selectedDie}
           onValueChange={(itemValue, itemIndex) => setSelectedDie(itemValue)}>
           {numbers.map((num) => (
-            <Picker.Item label={String(num)} value={num} />
+            <Picker.Item label={String(num)} value={num} key={num} />
           ))}
         </Picker>
       </View>
@@ -69,14 +69,14 @@ export default function DDModal(props) {
         }}>
         <DDButton
           buttonStyle={styles.button}
-          onPress={() => props.setDiceSelecter(false)}
+          onPress={() => props.setDiceSelector(false)}
           text="Cancel"
           textStyle={{ color: '#4A3D59', fontWeight: '500' }}
         />
         <DDButton
           buttonStyle={styles.button}
           onPress={() => {
-            props.setDiceSelecter(false);
+            props.setDiceSelector(false);
             props.diceCount[props.index] = selectedDie ? selectedDie : '';
           }}
           text="Done"

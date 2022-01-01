@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 0,
     
+    
   },
   buttonOpen: {
     //change color to white if you want to see how big dimensions are 

@@ -26,7 +26,7 @@ const windowHeight = Dimensions.get('window').height;
 // export function
 export default function create() {
   const [title, setTitle] = React.useState('Create Spell');
-  const [diceSelecter, setDiceSelecter] = React.useState(false);
+  const [diceSelector, setDiceSelector] = React.useState(false);
   const [diceCount, setDiceCount] = React.useState(['', '', '', '', '']);
   const [index, setIndex] = React.useState(0);
   const [spellName, setSpellName] = React.useState('');
@@ -55,9 +55,9 @@ export default function create() {
       <SafeAreaView style={{ flex:0, backgroundColor: '#231942' }}/>
 
       <SafeAreaView style={styles.container}>
-        <Modal visible={diceSelecter} animationType="slide">
+        <Modal visible={diceSelector} animationType="slide">
           <DDModal
-            setDiceSelecter={setDiceSelecter}
+            setDiceSelector={setDiceSelector}
             diceCount={diceCount}
             setDiceCount={setDiceCount}
             index={index}
@@ -93,35 +93,35 @@ export default function create() {
             <DDdiceSelect
               text={diceCount[0] + 'D4'}
               press={() => {
-                setDiceSelecter(!diceSelecter);
+                setDiceSelector(!diceSelector);
                 setIndex(0);
               }}
             />
             <DDdiceSelect
               text={diceCount[1] + 'D6'}
               press={() => {
-                setDiceSelecter(!diceSelecter);
+                setDiceSelector(!diceSelector);
                 setIndex(1);
               }}
             />
             <DDdiceSelect
               text={diceCount[2] + 'D8'}
               press={() => {
-                setDiceSelecter(!diceSelecter);
+                setDiceSelector(!diceSelector);
                 setIndex(2);
               }}
             />
             <DDdiceSelect
               text={diceCount[3] + 'D10'}
               press={() => {
-                setDiceSelecter(!diceSelecter);
+                setDiceSelector(!diceSelector);
                 setIndex(3);
               }}
             />
             <DDdiceSelect
               text={diceCount[4] + 'D12'}
               press={() => {
-                setDiceSelecter(!diceSelecter);
+                setDiceSelector(!diceSelector);
                 setIndex(4);
               }}
             />
