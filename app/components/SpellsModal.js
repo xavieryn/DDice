@@ -1,8 +1,8 @@
 import React from "react";
-import { Alert, Modal, StyleSheet, Text, TouchableOpacity, Pressable, View, Image } from "react-native";
+import { Alert, Modal, StyleSheet, Text, TouchableOpacity, Pressable, View, Image, Icon} from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import AsyncStorageLib from "@react-native-async-storage/async-storage";
-
+import { Ionicons } from '@expo/vector-icons'
 const App = ( { item } ) => {
   const [modalVisible, setModalVisible] = React.useState(false);
 
@@ -40,13 +40,18 @@ const App = ( { item } ) => {
                 Delete
               </Text>
             </TouchableOpacity>
-            {/* closes item */}
-            <TouchableOpacity
-              style={[styles.button, styles.buttonClose]}
+            {/* closes item
+            FIX THIS */}
+            
+            <Ionicons 
+              name='close'
+              style={styles.buttonClose2}
+              size={25}
+              color='#E4D8C6'
               onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>Close</Text>
-            </TouchableOpacity>
+
+            />
+            
              
           </View>
         </View>
@@ -90,7 +95,6 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 0,
     
-    
   },
   buttonOpen: {
     //change color to white if you want to see how big dimensions are 
@@ -99,8 +103,15 @@ const styles = StyleSheet.create({
   buttonClose: {
     backgroundColor:  '#e4d8c6',
   },
+  buttonClose2: {
+   position: 'absolute',
+   top: 3,
+   right: 5,
+
+    //position: 'absolute',
+  },
   textStyle: {
-    color: "#4a3d59",
+    color: "white",
     fontWeight: "500",
     textAlign: "center"
   },
