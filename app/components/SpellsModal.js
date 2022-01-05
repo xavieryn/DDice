@@ -35,9 +35,9 @@ const App = ( { item } ) => {
             {/* deletes item */}
             <TouchableOpacity 
             onPress={deleteSpell}
-            style={[styles.button, styles.buttonClose]}>
+            style={styles.button}>
               <Text>
-                Delete
+                Delete Spell
               </Text>
             </TouchableOpacity>
             {/* closes item
@@ -94,7 +94,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     elevation: 0,
-    
+    backgroundColor: '#E4D8C6',
+    alignSelf: "stretch",
+    margin: 10,
+
   },
   buttonOpen: {
     //change color to white if you want to see how big dimensions are 
@@ -132,6 +135,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
+    fontSize: 15,
   }
 });
 
