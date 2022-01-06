@@ -54,6 +54,8 @@ export default function compare() {
       <SafeAreaView style={styles.container}>
         <Modal visible={graph} animationType="slide">
           <CompareModal
+            spell1={[...spellMap].filter(s => selectedSpell1 == s.key).length == 1 ? [...spellMap].filter(s => selectedSpell1 == s.key)[0].text : 'there is no spell'}
+            spell2={[...spellMap].filter(s => selectedSpell2 == s.key).length == 1 ? [...spellMap].filter(s => selectedSpell2 == s.key)[0].text : 'there is no spell'}
             data1={[...spellMap].filter(s => selectedSpell1 == s.key).length == 1 ? roll([...spellMap].filter(s => selectedSpell1 == s.key)[0]) : roll({d4: 0, d6: 2, d8: 0, d10: 0, d12: 0})}
             data2={[...spellMap].filter(s => selectedSpell2 == s.key).length == 1 ? roll([...spellMap].filter(s => selectedSpell2 == s.key)[0]) : roll({d4: 0, d6: 2, d8: 0, d10: 0, d12: 0})}
           />
@@ -103,6 +105,7 @@ export default function compare() {
             }}
             onPress={() => {
               setGraph(!graph)
+              console.log(selectedSpell1)
             }}
             text="Visualize"
             textStyle={{

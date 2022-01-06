@@ -16,6 +16,7 @@ import {
   Modal,
   SafeAreaView
 } from 'react-native';
+import { color } from 'react-native-reanimated';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -30,7 +31,6 @@ export default function CompareModal(props) {
   }
 
   const lines = {
-    labels: [...Array(props.data1.length).keys()],
     datasets: [
       {
         data: props.data2.map((value) => value * 100),
@@ -57,7 +57,10 @@ export default function CompareModal(props) {
           style={{
             flexDirection: 'column',
             justifyContent: 'space-evenly',
+            alignItems: 'center'
           }}>
+          <Text style={{color: '#231942'}}>{props.spell1}</Text>
+          <Text style={{color: '#E4D8C6'}}>{props.spell2}</Text>
           <LineChart
             data={lines}
             width={Dimensions.get("window").width} // from react-native
