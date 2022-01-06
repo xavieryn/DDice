@@ -5,9 +5,11 @@ import {
   StyleSheet,
   Dimensions,
   SafeAreaView,
+  Image,
 } from 'react-native';
 
 const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 
 // export function
 export default function create() {
@@ -26,6 +28,14 @@ export default function create() {
             borderBottomStartRadius: 5,
           }}>
           <Text style={styles.header}>{title}</Text>
+
+          
+        </View>
+        <View style={styles.container1}>
+          <Image
+            style={styles.image}
+            source={require('../assets/zzz.png')}
+          />
         </View>
 
       </SafeAreaView>
@@ -46,5 +56,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#E6DEFC',
+  },
+  container1: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    backgroundColor: '#9988A4',
+  },
+  image: {
+    width: windowWidth/1.5,
+    resizeMode: 'contain'
   },
 });
