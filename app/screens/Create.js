@@ -56,127 +56,129 @@ export default function create() {
       <SafeAreaView style={{ flex:0, backgroundColor: '#231942' }}/>
 
       <SafeAreaView style={styles.container}>
-        <Modal visible={diceSelector} animationType="slide">
-          <DDModal
-            setDiceSelector={setDiceSelector}
-            diceCount={diceCount}
-            setDiceCount={setDiceCount}
-            index={index}
-          />
-        </Modal>
-        {/*top*/}
-        <View
-          style={{
-            backgroundColor: '#231942',
-            borderBottomEndRadius: 5,
-            borderBottomStartRadius: 5,
-          }}>
-          <Text style={styles.header}>{title}</Text>
-        </View>
-
-        {/*middle*/}
-        <View
-          style={{
-            flexDirection: 'row',
-            paddingHorizontal: 9,
-            alignItems: 'center',
-          }}>
-          {/* dice selection menu */}
+        <View style={{justifyContent: 'center', flexDirection: 'column'}}>
+          <Modal visible={diceSelector} animationType="slide">
+            <DDModal
+              setDiceSelector={setDiceSelector}
+              diceCount={diceCount}
+              setDiceCount={setDiceCount}
+              index={index}
+            />
+          </Modal>
+          {/*top*/}
           <View
             style={{
-              flex: 1.2,
-              flexDirection: 'column',
-              justifyContent: 'center',
-              height: windowHeight / 1.5,
-              borderWidth: 0,
+              backgroundColor: '#231942',
+              borderBottomEndRadius: 5,
+              borderBottomStartRadius: 5,
             }}>
-            
-            <DDdiceSelect
-              text={diceCount[0] + 'D4'}
-              press={() => {
-                setDiceSelector(!diceSelector);
-                setIndex(0);
-              }}
-            />
-            <DDdiceSelect
-              text={diceCount[1] + 'D6'}
-              press={() => {
-                setDiceSelector(!diceSelector);
-                setIndex(1);
-              }}
-            />
-            <DDdiceSelect
-              text={diceCount[2] + 'D8'}
-              press={() => {
-                setDiceSelector(!diceSelector);
-                setIndex(2);
-              }}
-            />
-            <DDdiceSelect
-              text={diceCount[3] + 'D10'}
-              press={() => {
-                setDiceSelector(!diceSelector);
-                setIndex(3);
-              }}
-            />
-            <DDdiceSelect
-              text={diceCount[4] + 'D12'}
-              press={() => {
-                setDiceSelector(!diceSelector);
-                setIndex(4);
-              }}
-            />
+            <Text style={styles.header}>{title}</Text>
           </View>
 
-          {/* spell name and creation */}
+          {/*middle*/}
           <View
             style={{
-              flex: 1.8,
-              flexDirection: 'column',
-              justifyContent: 'space-evenly',
-              borderWidth: 0,
+              flexDirection: 'row',
+              paddingHorizontal: 9,
+              alignItems: 'center',
+              paddingTop: windowHeight/30
             }}>
-            <View style={{borderWidth: 0, flex: 4, marginLeft: windowWidth/20}}>
-              <Image style={{flex: 1, resizeMode: 'contain', width: windowWidth/2}} source={require('../assets/squid.png')} />
-            </View>
+            {/* dice selection menu */}
             <View
               style={{
-                flex: 1,
+                flex: 1.2,
                 flexDirection: 'column',
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-                padding: 5,
+                justifyContent: 'center',
+                height: windowHeight / 1.5,
+                borderWidth: 0,
               }}>
-              {/* name input */}
-              <TextInput
-                style={styles.input}
-                placeholder="Spell name"
-                onChangeText={(text) => setSpellName(text)}
-              />
-
-              {/* create spell button */}
-              <DDButton
-                
-                buttonStyle={{
-                  backgroundColor: '#E4D8C6',
-                  height: 35,
-                  width: windowWidth / 2,
-                  alignItems: 'center',
-                  borderRadius: 2,
-                  justifyContent: 'center',
+              
+              <DDdiceSelect
+                text={diceCount[0] + 'D4'}
+                press={() => {
+                  setDiceSelector(!diceSelector);
+                  setIndex(0);
                 }}
-                onPress={handleOnSubmit}
-                text="Create Spell"
-                textStyle={{
-                  color: '#4A3D59',
-                  fontWeight: 'bold',
-                  fontSize: 15,
+              />
+              <DDdiceSelect
+                text={diceCount[1] + 'D6'}
+                press={() => {
+                  setDiceSelector(!diceSelector);
+                  setIndex(1);
+                }}
+              />
+              <DDdiceSelect
+                text={diceCount[2] + 'D8'}
+                press={() => {
+                  setDiceSelector(!diceSelector);
+                  setIndex(2);
+                }}
+              />
+              <DDdiceSelect
+                text={diceCount[3] + 'D10'}
+                press={() => {
+                  setDiceSelector(!diceSelector);
+                  setIndex(3);
+                }}
+              />
+              <DDdiceSelect
+                text={diceCount[4] + 'D12'}
+                press={() => {
+                  setDiceSelector(!diceSelector);
+                  setIndex(4);
                 }}
               />
             </View>
+
+            {/* spell name and creation */}
+            <View
+              style={{
+                flex: 1.8,
+                flexDirection: 'column',
+                justifyContent: 'space-evenly',
+                borderWidth: 0,
+              }}>
+              <View style={{borderWidth: 0, flex: 4, marginLeft: windowWidth/20}}>
+                <Image style={{flex: 1, resizeMode: 'contain', width: windowWidth/2}} source={require('../assets/squid.png')} />
+              </View>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                  alignItems: 'center',
+                  padding: 5,
+                }}>
+                {/* name input */}
+                <TextInput
+                  style={styles.input}
+                  placeholder="Spell name"
+                  onChangeText={(text) => setSpellName(text)}
+                />
+
+                {/* create spell button */}
+                <DDButton
+                  
+                  buttonStyle={{
+                    backgroundColor: '#E4D8C6',
+                    height: 35,
+                    width: windowWidth / 2,
+                    alignItems: 'center',
+                    borderRadius: 2,
+                    justifyContent: 'center',
+                  }}
+                  onPress={handleOnSubmit}
+                  text="Create Spell"
+                  textStyle={{
+                    color: '#4A3D59',
+                    fontWeight: 'bold',
+                    fontSize: 15,
+                  }}
+                />
+              </View>
+            </View>
           </View>
         </View>
-
         {/*bottom*/}
       </SafeAreaView>
     </>
@@ -187,7 +189,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#9988A4',
-    paddingBottom: windowHeight / 20,
     justifyContent: 'space-between',
   },
   paragraph: {
