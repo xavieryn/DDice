@@ -75,6 +75,7 @@ export default function compare() {
           style={{
             flexDirection: 'column',
             justifyContent: 'space-evenly',
+            paddingBottom: windowHeight/30
           }}>
           <Picker
             selectedValue={selectedSpell1}
@@ -93,7 +94,7 @@ export default function compare() {
         </View>
 
         {/*bottom*/}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingBottom: windowHeight/30}}>
           <DDButton
             buttonStyle={{
               backgroundColor: '#E4D8C6',
