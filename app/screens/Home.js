@@ -27,7 +27,6 @@ export default function Home() {
         </View>
         <View style={styles.buttonIntro}>
           <TouchableOpacity>
-            <Text> penis </Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
