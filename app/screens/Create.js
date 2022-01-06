@@ -7,6 +7,7 @@ import {
   TextInput,
   Modal,
   SafeAreaView,
+  Image,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
@@ -135,6 +136,9 @@ export default function create() {
               justifyContent: 'space-evenly',
               borderWidth: 0,
             }}>
+            <View style={{borderWidth: 0, flex: 4, marginLeft: windowWidth/20}}>
+              <Image style={{flex: 1, resizeMode: 'contain', width: windowWidth/2}} source={require('../assets/squid.png')} />
+            </View>
             <View
               style={{
                 flex: 1,
