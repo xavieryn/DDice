@@ -14,11 +14,7 @@ export default function Home() {
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <View
-          style={{
-            borderBottomEndRadius: 5,
-            borderBottomStartRadius: 5,
-          }}>
+        <View>
           <Image style={{width: windowWidth, height: 200, resizeMode: 'contain'}} source={require('../assets/dndice.png')} />
         </View>
         <View style={styles.innerContainer}>
@@ -56,7 +52,6 @@ const styles = StyleSheet.create({
   innerContainer: {
     flex: 1,   
     alignItems: 'center',
-    borderWidth: 1,
     justifyContent: 'center',
     padding: 10,
   },
